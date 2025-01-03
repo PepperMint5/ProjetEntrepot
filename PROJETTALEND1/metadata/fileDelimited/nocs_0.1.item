@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_0ylMEcm0Ee-tM4kGfS9dhw" name="nocs" dataPackage="_0ylMEsm0Ee-tM4kGfS9dhw" Server="Localhost 127.0.0.1" FilePath="C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/TP_Donnees_JO_Paris_2024/nocs.csv" Format="WINDOWS" Encoding="UTF-8" FieldSeparatorValue="&quot;,&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FirstLineCaption="true" EscapeType="CSV" CsvOption="true" FieldSeparatorType="Comma"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_0ylMEsm0Ee-tM4kGfS9dhw" name="default" dataManager="_0ylMEcm0Ee-tM4kGfS9dhw">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_0ylME8m0Ee-tM4kGfS9dhw" id="_i7X58Mm0Ee-tM4kGfS9dhw" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_0ylMFMm0Ee-tM4kGfS9dhw" label="code" length="3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_0ylMFcm0Ee-tM4kGfS9dhw" label="country" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_0ylMFsm0Ee-tM4kGfS9dhw" label="country_long" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_0ylMF8m0Ee-tM4kGfS9dhw" label="tag" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_0ylMGMm0Ee-tM4kGfS9dhw" label="note" length="2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>
