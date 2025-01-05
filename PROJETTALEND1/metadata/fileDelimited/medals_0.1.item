@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_it_D0MkoEe-KjJ4otWKetA" name="medals" id="_ityPgMkoEe-KjJ4otWKetA" dataPackage="_it_D0ckoEe-KjJ4otWKetA" Server="Localhost 127.0.0.1" FilePath="C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/TP_Donnees_JO_Paris_2024/medals.csv" Format="WINDOWS" Encoding="UTF-8" FieldSeparatorValue="&quot;,&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FirstLineCaption="true" EscapeType="CSV" CsvOption="true" FieldSeparatorType="Comma"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_it_D0ckoEe-KjJ4otWKetA" name="default" dataManager="_it_D0MkoEe-KjJ4otWKetA">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_it_D0skoEe-KjJ4otWKetA" id="_It60MMkoEe-KjJ4otWKetA" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D08koEe-KjJ4otWKetA" label="medal_type" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D1MkoEe-KjJ4otWKetA" label="medal_code" length="1" talendType="id_Float" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D1ckoEe-KjJ4otWKetA" label="medal_date" length="10" talendType="id_Date" pattern="&quot;yyyy-mm-dd&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D1skoEe-KjJ4otWKetA" label="name" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D18koEe-KjJ4otWKetA" label="gender" length="1" talendType="id_Character" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D2MkoEe-KjJ4otWKetA" label="discipline" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D2ckoEe-KjJ4otWKetA" label="event" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D2skoEe-KjJ4otWKetA" label="event_type" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D28koEe-KjJ4otWKetA" label="url_event" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D3MkoEe-KjJ4otWKetA" label="code" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D3ckoEe-KjJ4otWKetA" label="country_code" length="3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D3skoEe-KjJ4otWKetA" label="country" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_it_D38koEe-KjJ4otWKetA" label="country_long" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>
