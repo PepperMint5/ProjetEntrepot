@@ -1,0 +1,6 @@
+title;city;date_start;date_end;tag;url;stage_number
+Lighting Ceremony;Olympia;2024-04-15T22:01:00Z;2024-04-16T10:01:00Z;lighting-ceremony;https://olympics.com/en/paris-2024/olympic-torch-relay/stages/lighting-ceremony;0.0
+Relay in Greece;UNKNOWN;2024-04-16T10:02:00Z;2024-04-26T17:06:00Z;relay-in-greece;https://olympics.com/en/paris-2024/olympic-torch-relay/stages/relay-in-greece;0.1
+Handover Ceremony;Athens;2024-04-25T22:01:00Z;2024-04-26T17:07:00Z;handover-ceremony;https://olympics.com/en/paris-2024/olympic-torch-relay/stages/handover-ceremony;0.2
+Crossing the Mediterranean;Marseille;2024-04-26T17:08:00Z;2024-05-07T22:01:00Z;mediterranean-crossing;https://olympics.com/en/paris-2024/olympic-torch-relay/stages/mediterranean-crossing;0.3
+Prologue;Marseille;2024-05-07T22:02:00Z;2024-05-08T20:02:00Z;prologue-marseille;https://olympics.com/en/paris-2024/olympic-torch-relay/stages/prologue-marseille;0.4
