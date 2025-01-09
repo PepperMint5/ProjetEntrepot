@@ -324,7 +324,45 @@ public class completude_medals implements TalendJob {
 		tFileInputDelimited_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tFileInputDelimited_2_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tFileOutputDelimited_2_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_1_onSubJobError(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_2_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
@@ -1884,7 +1922,7 @@ public class completude_medals implements TalendJob {
 
 				String fileName_tFileOutputDelimited_1 = "";
 				fileName_tFileOutputDelimited_1 = (new java.io.File(
-						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/ProjetEntrepot/out.csv"))
+						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/ProjetEntrepot/medals_out.csv"))
 								.getAbsolutePath().replace("\\", "/");
 				String fullName_tFileOutputDelimited_1 = null;
 				String extension_tFileOutputDelimited_1 = null;
@@ -1954,6 +1992,37 @@ public class completude_medals implements TalendJob {
 				}
 				outtFileOutputDelimited_1 = new java.io.BufferedWriter(new java.io.OutputStreamWriter(
 						new java.io.FileOutputStream(fileName_tFileOutputDelimited_1, false), "ISO-8859-15"));
+				if (filetFileOutputDelimited_1.length() == 0) {
+					outtFileOutputDelimited_1.write("medal_type");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("medal_code");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("medal_date");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("name");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("gender");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("discipline");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("event");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("event_type");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("url_event");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("code");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("country_code");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("country");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("country_long");
+					outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.write("errorMessage");
+					outtFileOutputDelimited_1.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_1);
+					outtFileOutputDelimited_1.flush();
+				}
 
 				resourceMap.put("out_tFileOutputDelimited_1", outtFileOutputDelimited_1);
 				resourceMap.put("nb_line_tFileOutputDelimited_1", nb_line_tFileOutputDelimited_1);
@@ -3070,6 +3139,1974 @@ public class completude_medals implements TalendJob {
 		globalMap.put("tFileInputDelimited_1_SUBPROCESS_STATE", 1);
 	}
 
+	public static class out1Struct implements routines.system.IPersistableRow<out1Struct> {
+		final static byte[] commonByteArrayLock_PROJETTALEND1_completude_medals = new byte[0];
+		static byte[] commonByteArray_PROJETTALEND1_completude_medals = new byte[0];
+
+		public String medal_type;
+
+		public String getMedal_type() {
+			return this.medal_type;
+		}
+
+		public Float medal_code;
+
+		public Float getMedal_code() {
+			return this.medal_code;
+		}
+
+		public java.util.Date medal_date;
+
+		public java.util.Date getMedal_date() {
+			return this.medal_date;
+		}
+
+		public String name;
+
+		public String getName() {
+			return this.name;
+		}
+
+		public Character gender;
+
+		public Character getGender() {
+			return this.gender;
+		}
+
+		public String discipline;
+
+		public String getDiscipline() {
+			return this.discipline;
+		}
+
+		public String event;
+
+		public String getEvent() {
+			return this.event;
+		}
+
+		public String event_type;
+
+		public String getEvent_type() {
+			return this.event_type;
+		}
+
+		public String url_event;
+
+		public String getUrl_event() {
+			return this.url_event;
+		}
+
+		public String code;
+
+		public String getCode() {
+			return this.code;
+		}
+
+		public String country_code;
+
+		public String getCountry_code() {
+			return this.country_code;
+		}
+
+		public String country;
+
+		public String getCountry() {
+			return this.country;
+		}
+
+		public String country_long;
+
+		public String getCountry_long() {
+			return this.country_long;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_medals.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_medals.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_PROJETTALEND1_completude_medals, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_medals, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = unmarshaller.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_medals.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_medals.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[2 * length];
+					}
+				}
+				unmarshaller.readFully(commonByteArray_PROJETTALEND1_completude_medals, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_medals, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (str == null) {
+				marshaller.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				marshaller.writeInt(byteArray.length);
+				marshaller.write(byteArray);
+			}
+		}
+
+		private java.util.Date readDate(ObjectInputStream dis) throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(dis.readLong());
+			}
+			return dateReturn;
+		}
+
+		private java.util.Date readDate(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = unmarshaller.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(unmarshaller.readLong());
+			}
+			return dateReturn;
+		}
+
+		private void writeDate(java.util.Date date1, ObjectOutputStream dos) throws IOException {
+			if (date1 == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeLong(date1.getTime());
+			}
+		}
+
+		private void writeDate(java.util.Date date1, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (date1 == null) {
+				marshaller.writeByte(-1);
+			} else {
+				marshaller.writeByte(0);
+				marshaller.writeLong(date1.getTime());
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_medals) {
+
+				try {
+
+					int length = 0;
+
+					this.medal_type = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.medal_code = null;
+					} else {
+						this.medal_code = dis.readFloat();
+					}
+
+					this.medal_date = readDate(dis);
+
+					this.name = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.gender = null;
+					} else {
+						this.gender = dis.readChar();
+					}
+
+					this.discipline = readString(dis);
+
+					this.event = readString(dis);
+
+					this.event_type = readString(dis);
+
+					this.url_event = readString(dis);
+
+					this.code = readString(dis);
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_medals) {
+
+				try {
+
+					int length = 0;
+
+					this.medal_type = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.medal_code = null;
+					} else {
+						this.medal_code = dis.readFloat();
+					}
+
+					this.medal_date = readDate(dis);
+
+					this.name = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.gender = null;
+					} else {
+						this.gender = dis.readChar();
+					}
+
+					this.discipline = readString(dis);
+
+					this.event = readString(dis);
+
+					this.event_type = readString(dis);
+
+					this.url_event = readString(dis);
+
+					this.code = readString(dis);
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.medal_type, dos);
+
+				// Float
+
+				if (this.medal_code == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeFloat(this.medal_code);
+				}
+
+				// java.util.Date
+
+				writeDate(this.medal_date, dos);
+
+				// String
+
+				writeString(this.name, dos);
+
+				// Character
+
+				if (this.gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.gender);
+				}
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.event, dos);
+
+				// String
+
+				writeString(this.event_type, dos);
+
+				// String
+
+				writeString(this.url_event, dos);
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public void writeData(org.jboss.marshalling.Marshaller dos) {
+			try {
+
+				// String
+
+				writeString(this.medal_type, dos);
+
+				// Float
+
+				if (this.medal_code == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeFloat(this.medal_code);
+				}
+
+				// java.util.Date
+
+				writeDate(this.medal_date, dos);
+
+				// String
+
+				writeString(this.name, dos);
+
+				// Character
+
+				if (this.gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.gender);
+				}
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.event, dos);
+
+				// String
+
+				writeString(this.event_type, dos);
+
+				// String
+
+				writeString(this.url_event, dos);
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("medal_type=" + medal_type);
+			sb.append(",medal_code=" + String.valueOf(medal_code));
+			sb.append(",medal_date=" + String.valueOf(medal_date));
+			sb.append(",name=" + name);
+			sb.append(",gender=" + String.valueOf(gender));
+			sb.append(",discipline=" + discipline);
+			sb.append(",event=" + event);
+			sb.append(",event_type=" + event_type);
+			sb.append(",url_event=" + url_event);
+			sb.append(",code=" + code);
+			sb.append(",country_code=" + country_code);
+			sb.append(",country=" + country);
+			sb.append(",country_long=" + country_long);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(out1Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row4Struct implements routines.system.IPersistableRow<row4Struct> {
+		final static byte[] commonByteArrayLock_PROJETTALEND1_completude_medals = new byte[0];
+		static byte[] commonByteArray_PROJETTALEND1_completude_medals = new byte[0];
+
+		public String medal_type;
+
+		public String getMedal_type() {
+			return this.medal_type;
+		}
+
+		public Float medal_code;
+
+		public Float getMedal_code() {
+			return this.medal_code;
+		}
+
+		public java.util.Date medal_date;
+
+		public java.util.Date getMedal_date() {
+			return this.medal_date;
+		}
+
+		public String name;
+
+		public String getName() {
+			return this.name;
+		}
+
+		public Character gender;
+
+		public Character getGender() {
+			return this.gender;
+		}
+
+		public String discipline;
+
+		public String getDiscipline() {
+			return this.discipline;
+		}
+
+		public String event;
+
+		public String getEvent() {
+			return this.event;
+		}
+
+		public String event_type;
+
+		public String getEvent_type() {
+			return this.event_type;
+		}
+
+		public String url_event;
+
+		public String getUrl_event() {
+			return this.url_event;
+		}
+
+		public String code;
+
+		public String getCode() {
+			return this.code;
+		}
+
+		public String country_code;
+
+		public String getCountry_code() {
+			return this.country_code;
+		}
+
+		public String country;
+
+		public String getCountry() {
+			return this.country;
+		}
+
+		public String country_long;
+
+		public String getCountry_long() {
+			return this.country_long;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_medals.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_medals.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_PROJETTALEND1_completude_medals, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_medals, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = unmarshaller.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_medals.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_medals.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_medals = new byte[2 * length];
+					}
+				}
+				unmarshaller.readFully(commonByteArray_PROJETTALEND1_completude_medals, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_medals, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (str == null) {
+				marshaller.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				marshaller.writeInt(byteArray.length);
+				marshaller.write(byteArray);
+			}
+		}
+
+		private java.util.Date readDate(ObjectInputStream dis) throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(dis.readLong());
+			}
+			return dateReturn;
+		}
+
+		private java.util.Date readDate(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = unmarshaller.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(unmarshaller.readLong());
+			}
+			return dateReturn;
+		}
+
+		private void writeDate(java.util.Date date1, ObjectOutputStream dos) throws IOException {
+			if (date1 == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeLong(date1.getTime());
+			}
+		}
+
+		private void writeDate(java.util.Date date1, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (date1 == null) {
+				marshaller.writeByte(-1);
+			} else {
+				marshaller.writeByte(0);
+				marshaller.writeLong(date1.getTime());
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_medals) {
+
+				try {
+
+					int length = 0;
+
+					this.medal_type = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.medal_code = null;
+					} else {
+						this.medal_code = dis.readFloat();
+					}
+
+					this.medal_date = readDate(dis);
+
+					this.name = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.gender = null;
+					} else {
+						this.gender = dis.readChar();
+					}
+
+					this.discipline = readString(dis);
+
+					this.event = readString(dis);
+
+					this.event_type = readString(dis);
+
+					this.url_event = readString(dis);
+
+					this.code = readString(dis);
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_medals) {
+
+				try {
+
+					int length = 0;
+
+					this.medal_type = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.medal_code = null;
+					} else {
+						this.medal_code = dis.readFloat();
+					}
+
+					this.medal_date = readDate(dis);
+
+					this.name = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.gender = null;
+					} else {
+						this.gender = dis.readChar();
+					}
+
+					this.discipline = readString(dis);
+
+					this.event = readString(dis);
+
+					this.event_type = readString(dis);
+
+					this.url_event = readString(dis);
+
+					this.code = readString(dis);
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.medal_type, dos);
+
+				// Float
+
+				if (this.medal_code == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeFloat(this.medal_code);
+				}
+
+				// java.util.Date
+
+				writeDate(this.medal_date, dos);
+
+				// String
+
+				writeString(this.name, dos);
+
+				// Character
+
+				if (this.gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.gender);
+				}
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.event, dos);
+
+				// String
+
+				writeString(this.event_type, dos);
+
+				// String
+
+				writeString(this.url_event, dos);
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public void writeData(org.jboss.marshalling.Marshaller dos) {
+			try {
+
+				// String
+
+				writeString(this.medal_type, dos);
+
+				// Float
+
+				if (this.medal_code == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeFloat(this.medal_code);
+				}
+
+				// java.util.Date
+
+				writeDate(this.medal_date, dos);
+
+				// String
+
+				writeString(this.name, dos);
+
+				// Character
+
+				if (this.gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.gender);
+				}
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.event, dos);
+
+				// String
+
+				writeString(this.event_type, dos);
+
+				// String
+
+				writeString(this.url_event, dos);
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("medal_type=" + medal_type);
+			sb.append(",medal_code=" + String.valueOf(medal_code));
+			sb.append(",medal_date=" + String.valueOf(medal_date));
+			sb.append(",name=" + name);
+			sb.append(",gender=" + String.valueOf(gender));
+			sb.append(",discipline=" + discipline);
+			sb.append(",event=" + event);
+			sb.append(",event_type=" + event_type);
+			sb.append(",url_event=" + url_event);
+			sb.append(",code=" + code);
+			sb.append(",country_code=" + country_code);
+			sb.append(",country=" + country);
+			sb.append(",country_long=" + country_long);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row4Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tFileInputDelimited_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				row4Struct row4 = new row4Struct();
+				out1Struct out1 = new out1Struct();
+
+				/**
+				 * [tFileOutputDelimited_2 begin ] start
+				 */
+
+				ok_Hash.put("tFileOutputDelimited_2", false);
+				start_Hash.put("tFileOutputDelimited_2", System.currentTimeMillis());
+
+				currentComponent = "tFileOutputDelimited_2";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "out1");
+				}
+
+				int tos_count_tFileOutputDelimited_2 = 0;
+
+				String fileName_tFileOutputDelimited_2 = "";
+				fileName_tFileOutputDelimited_2 = (new java.io.File(
+						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/ProjetEntrepot/output/cleanProcess/medals_cleaned.csv"))
+								.getAbsolutePath().replace("\\", "/");
+				String fullName_tFileOutputDelimited_2 = null;
+				String extension_tFileOutputDelimited_2 = null;
+				String directory_tFileOutputDelimited_2 = null;
+				if ((fileName_tFileOutputDelimited_2.indexOf("/") != -1)) {
+					if (fileName_tFileOutputDelimited_2.lastIndexOf(".") < fileName_tFileOutputDelimited_2
+							.lastIndexOf("/")) {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2;
+						extension_tFileOutputDelimited_2 = "";
+					} else {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2.substring(0,
+								fileName_tFileOutputDelimited_2.lastIndexOf("."));
+						extension_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2
+								.substring(fileName_tFileOutputDelimited_2.lastIndexOf("."));
+					}
+					directory_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2.substring(0,
+							fileName_tFileOutputDelimited_2.lastIndexOf("/"));
+				} else {
+					if (fileName_tFileOutputDelimited_2.lastIndexOf(".") != -1) {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2.substring(0,
+								fileName_tFileOutputDelimited_2.lastIndexOf("."));
+						extension_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2
+								.substring(fileName_tFileOutputDelimited_2.lastIndexOf("."));
+					} else {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2;
+						extension_tFileOutputDelimited_2 = "";
+					}
+					directory_tFileOutputDelimited_2 = "";
+				}
+				boolean isFileGenerated_tFileOutputDelimited_2 = true;
+				java.io.File filetFileOutputDelimited_2 = new java.io.File(fileName_tFileOutputDelimited_2);
+				globalMap.put("tFileOutputDelimited_2_FILE_NAME", fileName_tFileOutputDelimited_2);
+				if (filetFileOutputDelimited_2.exists()) {
+					throw new RuntimeException("The particular file \"" + filetFileOutputDelimited_2.getAbsoluteFile()
+							+ "\" already exist. If you want to overwrite the file, please uncheck the"
+							+ " \"Throw an error if the file already exist\" option in Advanced settings.");
+				}
+				int nb_line_tFileOutputDelimited_2 = 0;
+				int splitedFileNo_tFileOutputDelimited_2 = 0;
+				int currentRow_tFileOutputDelimited_2 = 0;
+
+				final String OUT_DELIM_tFileOutputDelimited_2 = /** Start field tFileOutputDelimited_2:FIELDSEPARATOR */
+						";"/** End field tFileOutputDelimited_2:FIELDSEPARATOR */
+				;
+
+				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_2 = /**
+																		 * Start field
+																		 * tFileOutputDelimited_2:ROWSEPARATOR
+																		 */
+						"\n"/** End field tFileOutputDelimited_2:ROWSEPARATOR */
+				;
+
+				// create directory only if not exists
+				if (directory_tFileOutputDelimited_2 != null && directory_tFileOutputDelimited_2.trim().length() != 0) {
+					java.io.File dir_tFileOutputDelimited_2 = new java.io.File(directory_tFileOutputDelimited_2);
+					if (!dir_tFileOutputDelimited_2.exists()) {
+						dir_tFileOutputDelimited_2.mkdirs();
+					}
+				}
+
+				// routines.system.Row
+				java.io.Writer outtFileOutputDelimited_2 = null;
+
+				java.io.File fileToDelete_tFileOutputDelimited_2 = new java.io.File(fileName_tFileOutputDelimited_2);
+				if (fileToDelete_tFileOutputDelimited_2.exists()) {
+					fileToDelete_tFileOutputDelimited_2.delete();
+				}
+				outtFileOutputDelimited_2 = new java.io.BufferedWriter(new java.io.OutputStreamWriter(
+						new java.io.FileOutputStream(fileName_tFileOutputDelimited_2, false), "ISO-8859-15"));
+				if (filetFileOutputDelimited_2.length() == 0) {
+					outtFileOutputDelimited_2.write("medal_type");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("medal_code");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("medal_date");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("name");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("gender");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("discipline");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("event");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("event_type");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("url_event");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("code");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("country_code");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("country");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("country_long");
+					outtFileOutputDelimited_2.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.flush();
+				}
+
+				resourceMap.put("out_tFileOutputDelimited_2", outtFileOutputDelimited_2);
+				resourceMap.put("nb_line_tFileOutputDelimited_2", nb_line_tFileOutputDelimited_2);
+
+				/**
+				 * [tFileOutputDelimited_2 begin ] stop
+				 */
+
+				/**
+				 * [tMap_1 begin ] start
+				 */
+
+				ok_Hash.put("tMap_1", false);
+				start_Hash.put("tMap_1", System.currentTimeMillis());
+
+				currentComponent = "tMap_1";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row4");
+				}
+
+				int tos_count_tMap_1 = 0;
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_1__Struct {
+					String url_event;
+				}
+				Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				out1Struct out1_tmp = new out1Struct();
+// ###############################
+
+				/**
+				 * [tMap_1 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_2 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_2", false);
+				start_Hash.put("tFileInputDelimited_2", System.currentTimeMillis());
+
+				currentComponent = "tFileInputDelimited_2";
+
+				int tos_count_tFileInputDelimited_2 = 0;
+
+				final routines.system.RowState rowstate_tFileInputDelimited_2 = new routines.system.RowState();
+
+				int nb_line_tFileInputDelimited_2 = 0;
+				int footer_tFileInputDelimited_2 = 0;
+				int totalLinetFileInputDelimited_2 = 0;
+				int limittFileInputDelimited_2 = -1;
+				int lastLinetFileInputDelimited_2 = -1;
+
+				char fieldSeparator_tFileInputDelimited_2[] = null;
+
+				// support passing value (property: Field Separator) by 'context.fs' or
+				// 'globalMap.get("fs")'.
+				if (((String) ",").length() > 0) {
+					fieldSeparator_tFileInputDelimited_2 = ((String) ",").toCharArray();
+				} else {
+					throw new IllegalArgumentException("Field Separator must be assigned a char.");
+				}
+
+				char rowSeparator_tFileInputDelimited_2[] = null;
+
+				// support passing value (property: Row Separator) by 'context.rs' or
+				// 'globalMap.get("rs")'.
+				if (((String) "\n").length() > 0) {
+					rowSeparator_tFileInputDelimited_2 = ((String) "\n").toCharArray();
+				} else {
+					throw new IllegalArgumentException("Row Separator must be assigned a char.");
+				}
+
+				Object filename_tFileInputDelimited_2 = /** Start field tFileInputDelimited_2:FILENAME */
+						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/TP_Donnees_JO_Paris_2024/medals.csv"/**
+																																 * End
+																																 * field
+																																 * tFileInputDelimited_2:FILENAME
+																																 */
+				;
+				com.talend.csv.CSVReader csvReadertFileInputDelimited_2 = null;
+
+				try {
+
+					String[] rowtFileInputDelimited_2 = null;
+					int currentLinetFileInputDelimited_2 = 0;
+					int outputLinetFileInputDelimited_2 = 0;
+					try {// TD110 begin
+						if (filename_tFileInputDelimited_2 instanceof java.io.InputStream) {
+
+							int footer_value_tFileInputDelimited_2 = 0;
+							if (footer_value_tFileInputDelimited_2 > 0) {
+								throw new java.lang.Exception(
+										"When the input source is a stream,footer shouldn't be bigger than 0.");
+							}
+
+							csvReadertFileInputDelimited_2 = new com.talend.csv.CSVReader(
+									(java.io.InputStream) filename_tFileInputDelimited_2,
+									fieldSeparator_tFileInputDelimited_2[0], "UTF-8");
+						} else {
+							csvReadertFileInputDelimited_2 = new com.talend.csv.CSVReader(
+									String.valueOf(filename_tFileInputDelimited_2),
+									fieldSeparator_tFileInputDelimited_2[0], "UTF-8");
+						}
+
+						csvReadertFileInputDelimited_2.setTrimWhitespace(false);
+						if ((rowSeparator_tFileInputDelimited_2[0] != '\n')
+								&& (rowSeparator_tFileInputDelimited_2[0] != '\r'))
+							csvReadertFileInputDelimited_2.setLineEnd("" + rowSeparator_tFileInputDelimited_2[0]);
+
+						csvReadertFileInputDelimited_2.setQuoteChar('"');
+
+						csvReadertFileInputDelimited_2.setEscapeChar(csvReadertFileInputDelimited_2.getQuoteChar());
+
+						if (footer_tFileInputDelimited_2 > 0) {
+							for (totalLinetFileInputDelimited_2 = 0; totalLinetFileInputDelimited_2 < 1; totalLinetFileInputDelimited_2++) {
+								csvReadertFileInputDelimited_2.readNext();
+							}
+							csvReadertFileInputDelimited_2.setSkipEmptyRecords(false);
+							while (csvReadertFileInputDelimited_2.readNext()) {
+
+								totalLinetFileInputDelimited_2++;
+
+							}
+							int lastLineTemptFileInputDelimited_2 = totalLinetFileInputDelimited_2
+									- footer_tFileInputDelimited_2 < 0 ? 0
+											: totalLinetFileInputDelimited_2 - footer_tFileInputDelimited_2;
+							if (lastLinetFileInputDelimited_2 > 0) {
+								lastLinetFileInputDelimited_2 = lastLinetFileInputDelimited_2 < lastLineTemptFileInputDelimited_2
+										? lastLinetFileInputDelimited_2
+										: lastLineTemptFileInputDelimited_2;
+							} else {
+								lastLinetFileInputDelimited_2 = lastLineTemptFileInputDelimited_2;
+							}
+
+							csvReadertFileInputDelimited_2.close();
+							if (filename_tFileInputDelimited_2 instanceof java.io.InputStream) {
+								csvReadertFileInputDelimited_2 = new com.talend.csv.CSVReader(
+										(java.io.InputStream) filename_tFileInputDelimited_2,
+										fieldSeparator_tFileInputDelimited_2[0], "UTF-8");
+							} else {
+								csvReadertFileInputDelimited_2 = new com.talend.csv.CSVReader(
+										String.valueOf(filename_tFileInputDelimited_2),
+										fieldSeparator_tFileInputDelimited_2[0], "UTF-8");
+							}
+							csvReadertFileInputDelimited_2.setTrimWhitespace(false);
+							if ((rowSeparator_tFileInputDelimited_2[0] != '\n')
+									&& (rowSeparator_tFileInputDelimited_2[0] != '\r'))
+								csvReadertFileInputDelimited_2.setLineEnd("" + rowSeparator_tFileInputDelimited_2[0]);
+
+							csvReadertFileInputDelimited_2.setQuoteChar('"');
+
+							csvReadertFileInputDelimited_2.setEscapeChar(csvReadertFileInputDelimited_2.getQuoteChar());
+
+						}
+
+						if (limittFileInputDelimited_2 != 0) {
+							for (currentLinetFileInputDelimited_2 = 0; currentLinetFileInputDelimited_2 < 1; currentLinetFileInputDelimited_2++) {
+								csvReadertFileInputDelimited_2.readNext();
+							}
+						}
+						csvReadertFileInputDelimited_2.setSkipEmptyRecords(false);
+
+					} catch (java.lang.Exception e) {
+						globalMap.put("tFileInputDelimited_2_ERROR_MESSAGE", e.getMessage());
+
+						System.err.println(e.getMessage());
+
+					} // TD110 end
+
+					while (limittFileInputDelimited_2 != 0 && csvReadertFileInputDelimited_2 != null
+							&& csvReadertFileInputDelimited_2.readNext()) {
+						rowstate_tFileInputDelimited_2.reset();
+
+						rowtFileInputDelimited_2 = csvReadertFileInputDelimited_2.getValues();
+
+						currentLinetFileInputDelimited_2++;
+
+						if (lastLinetFileInputDelimited_2 > -1
+								&& currentLinetFileInputDelimited_2 > lastLinetFileInputDelimited_2) {
+							break;
+						}
+						outputLinetFileInputDelimited_2++;
+						if (limittFileInputDelimited_2 > 0
+								&& outputLinetFileInputDelimited_2 > limittFileInputDelimited_2) {
+							break;
+						}
+
+						row4 = null;
+
+						boolean whetherReject_tFileInputDelimited_2 = false;
+						row4 = new row4Struct();
+						try {
+
+							char fieldSeparator_tFileInputDelimited_2_ListType[] = null;
+							// support passing value (property: Field Separator) by 'context.fs' or
+							// 'globalMap.get("fs")'.
+							if (((String) ",").length() > 0) {
+								fieldSeparator_tFileInputDelimited_2_ListType = ((String) ",").toCharArray();
+							} else {
+								throw new IllegalArgumentException("Field Separator must be assigned a char.");
+							}
+							if (rowtFileInputDelimited_2.length == 1 && ("\015").equals(rowtFileInputDelimited_2[0])) {// empty
+																														// line
+																														// when
+																														// row
+																														// separator
+																														// is
+																														// '\n'
+
+								row4.medal_type = null;
+
+								row4.medal_code = null;
+
+								row4.medal_date = null;
+
+								row4.name = null;
+
+								row4.gender = null;
+
+								row4.discipline = null;
+
+								row4.event = null;
+
+								row4.event_type = null;
+
+								row4.url_event = null;
+
+								row4.code = null;
+
+								row4.country_code = null;
+
+								row4.country = null;
+
+								row4.country_long = null;
+
+							} else {
+
+								int columnIndexWithD_tFileInputDelimited_2 = 0; // Column Index
+
+								columnIndexWithD_tFileInputDelimited_2 = 0;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.medal_type = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.medal_type = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 1;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									if (rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2].length() > 0) {
+										try {
+
+											row4.medal_code = ParserUtils.parseTo_Float(
+													rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]);
+
+										} catch (java.lang.Exception ex_tFileInputDelimited_2) {
+											globalMap.put("tFileInputDelimited_2_ERROR_MESSAGE",
+													ex_tFileInputDelimited_2.getMessage());
+											rowstate_tFileInputDelimited_2.setException(new RuntimeException(String
+													.format("Couldn't parse value for column '%s' in '%s', value is '%s'. Details: %s",
+															"medal_code", "row4",
+															rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2],
+															ex_tFileInputDelimited_2),
+													ex_tFileInputDelimited_2));
+										}
+									} else {
+
+										row4.medal_code = null;
+
+									}
+
+								} else {
+
+									row4.medal_code = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 2;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									if (rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2].length() > 0) {
+										try {
+
+											row4.medal_date = ParserUtils.parseTo_Date(
+													rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2],
+													"yyyy-mm-dd");
+
+										} catch (java.lang.Exception ex_tFileInputDelimited_2) {
+											globalMap.put("tFileInputDelimited_2_ERROR_MESSAGE",
+													ex_tFileInputDelimited_2.getMessage());
+											rowstate_tFileInputDelimited_2.setException(new RuntimeException(String
+													.format("Couldn't parse value for column '%s' in '%s', value is '%s'. Details: %s",
+															"medal_date", "row4",
+															rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2],
+															ex_tFileInputDelimited_2),
+													ex_tFileInputDelimited_2));
+										}
+									} else {
+
+										row4.medal_date = null;
+
+									}
+
+								} else {
+
+									row4.medal_date = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 3;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.name = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.name = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 4;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									if (rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2].length() > 0) {
+										try {
+
+											row4.gender = ParserUtils.parseTo_Character(
+													rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]);
+
+										} catch (java.lang.Exception ex_tFileInputDelimited_2) {
+											globalMap.put("tFileInputDelimited_2_ERROR_MESSAGE",
+													ex_tFileInputDelimited_2.getMessage());
+											rowstate_tFileInputDelimited_2.setException(new RuntimeException(String
+													.format("Couldn't parse value for column '%s' in '%s', value is '%s'. Details: %s",
+															"gender", "row4",
+															rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2],
+															ex_tFileInputDelimited_2),
+													ex_tFileInputDelimited_2));
+										}
+									} else {
+
+										row4.gender = null;
+
+									}
+
+								} else {
+
+									row4.gender = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 5;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.discipline = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.discipline = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 6;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.event = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.event = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 7;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.event_type = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.event_type = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 8;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.url_event = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.url_event = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 9;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.code = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.code = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 10;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.country_code = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.country_code = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 11;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.country = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.country = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_2 = 12;
+
+								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
+
+									row4.country_long = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+
+								} else {
+
+									row4.country_long = null;
+
+								}
+
+							}
+
+							if (rowstate_tFileInputDelimited_2.getException() != null) {
+								throw rowstate_tFileInputDelimited_2.getException();
+							}
+
+						} catch (java.lang.Exception e) {
+							globalMap.put("tFileInputDelimited_2_ERROR_MESSAGE", e.getMessage());
+							whetherReject_tFileInputDelimited_2 = true;
+
+							System.err.println(e.getMessage());
+							row4 = null;
+
+							globalMap.put("tFileInputDelimited_2_ERROR_MESSAGE", e.getMessage());
+
+						}
+
+						/**
+						 * [tFileInputDelimited_2 begin ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_2 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+						tos_count_tFileInputDelimited_2++;
+
+						/**
+						 * [tFileInputDelimited_2 main ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_2 process_data_begin ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+						/**
+						 * [tFileInputDelimited_2 process_data_begin ] stop
+						 */
+// Start of branch "row4"
+						if (row4 != null) {
+
+							/**
+							 * [tMap_1 main ] start
+							 */
+
+							currentComponent = "tMap_1";
+
+							if (execStat) {
+								runStat.updateStatOnConnection(iterateId, 1, 1
+
+										, "row4"
+
+								);
+							}
+
+							boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
+
+							// ###############################
+							// # Input tables (lookups)
+							boolean rejectedInnerJoin_tMap_1 = false;
+							boolean mainRowRejected_tMap_1 = false;
+
+							// ###############################
+							{ // start of Var scope
+
+								// ###############################
+								// # Vars tables
+
+								Var__tMap_1__Struct Var = Var__tMap_1;
+								Var.url_event = row4.url_event == "" ? "UNKNOWN" : row4.url_event;// ###############################
+								// ###############################
+								// # Output tables
+
+								out1 = null;
+
+// # Output table : 'out1'
+								out1_tmp.medal_type = row4.medal_type;
+								out1_tmp.medal_code = row4.medal_code;
+								out1_tmp.medal_date = row4.medal_date;
+								out1_tmp.name = row4.name;
+								out1_tmp.gender = row4.gender;
+								out1_tmp.discipline = row4.discipline;
+								out1_tmp.event = row4.event;
+								out1_tmp.event_type = row4.event_type;
+								out1_tmp.url_event = Var.url_event;
+								out1_tmp.code = row4.code;
+								out1_tmp.country_code = row4.country_code;
+								out1_tmp.country = row4.country;
+								out1_tmp.country_long = row4.country_long;
+								out1 = out1_tmp;
+// ###############################
+
+							} // end of Var scope
+
+							rejectedInnerJoin_tMap_1 = false;
+
+							tos_count_tMap_1++;
+
+							/**
+							 * [tMap_1 main ] stop
+							 */
+
+							/**
+							 * [tMap_1 process_data_begin ] start
+							 */
+
+							currentComponent = "tMap_1";
+
+							/**
+							 * [tMap_1 process_data_begin ] stop
+							 */
+// Start of branch "out1"
+							if (out1 != null) {
+
+								/**
+								 * [tFileOutputDelimited_2 main ] start
+								 */
+
+								currentComponent = "tFileOutputDelimited_2";
+
+								if (execStat) {
+									runStat.updateStatOnConnection(iterateId, 1, 1
+
+											, "out1"
+
+									);
+								}
+
+								StringBuilder sb_tFileOutputDelimited_2 = new StringBuilder();
+								if (out1.medal_type != null) {
+									sb_tFileOutputDelimited_2.append(out1.medal_type);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.medal_code != null) {
+									sb_tFileOutputDelimited_2.append(out1.medal_code);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.medal_date != null) {
+									sb_tFileOutputDelimited_2
+											.append(FormatterUtils.format_Date(out1.medal_date, "yyyy-mm-dd"));
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.name != null) {
+									sb_tFileOutputDelimited_2.append(out1.name);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.gender != null) {
+									sb_tFileOutputDelimited_2.append(out1.gender);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.discipline != null) {
+									sb_tFileOutputDelimited_2.append(out1.discipline);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.event != null) {
+									sb_tFileOutputDelimited_2.append(out1.event);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.event_type != null) {
+									sb_tFileOutputDelimited_2.append(out1.event_type);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.url_event != null) {
+									sb_tFileOutputDelimited_2.append(out1.url_event);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.code != null) {
+									sb_tFileOutputDelimited_2.append(out1.code);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.country_code != null) {
+									sb_tFileOutputDelimited_2.append(out1.country_code);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.country != null) {
+									sb_tFileOutputDelimited_2.append(out1.country);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.country_long != null) {
+									sb_tFileOutputDelimited_2.append(out1.country_long);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_2);
+
+								nb_line_tFileOutputDelimited_2++;
+								resourceMap.put("nb_line_tFileOutputDelimited_2", nb_line_tFileOutputDelimited_2);
+
+								outtFileOutputDelimited_2.write(sb_tFileOutputDelimited_2.toString());
+
+								tos_count_tFileOutputDelimited_2++;
+
+								/**
+								 * [tFileOutputDelimited_2 main ] stop
+								 */
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_begin ] start
+								 */
+
+								currentComponent = "tFileOutputDelimited_2";
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_begin ] stop
+								 */
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_end ] start
+								 */
+
+								currentComponent = "tFileOutputDelimited_2";
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_end ] stop
+								 */
+
+							} // End of branch "out1"
+
+							/**
+							 * [tMap_1 process_data_end ] start
+							 */
+
+							currentComponent = "tMap_1";
+
+							/**
+							 * [tMap_1 process_data_end ] stop
+							 */
+
+						} // End of branch "row4"
+
+						/**
+						 * [tFileInputDelimited_2 process_data_end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+						/**
+						 * [tFileInputDelimited_2 process_data_end ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_2 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+						nb_line_tFileInputDelimited_2++;
+					}
+
+				} finally {
+					if (!(filename_tFileInputDelimited_2 instanceof java.io.InputStream)) {
+						if (csvReadertFileInputDelimited_2 != null) {
+							csvReadertFileInputDelimited_2.close();
+						}
+					}
+					if (csvReadertFileInputDelimited_2 != null) {
+						globalMap.put("tFileInputDelimited_2_NB_LINE", nb_line_tFileInputDelimited_2);
+					}
+
+				}
+
+				ok_Hash.put("tFileInputDelimited_2", true);
+				end_Hash.put("tFileInputDelimited_2", System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_2 end ] stop
+				 */
+
+				/**
+				 * [tMap_1 end ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row4");
+				}
+
+				ok_Hash.put("tMap_1", true);
+				end_Hash.put("tMap_1", System.currentTimeMillis());
+
+				/**
+				 * [tMap_1 end ] stop
+				 */
+
+				/**
+				 * [tFileOutputDelimited_2 end ] start
+				 */
+
+				currentComponent = "tFileOutputDelimited_2";
+
+				if (outtFileOutputDelimited_2 != null) {
+					outtFileOutputDelimited_2.flush();
+					outtFileOutputDelimited_2.close();
+				}
+
+				globalMap.put("tFileOutputDelimited_2_NB_LINE", nb_line_tFileOutputDelimited_2);
+				globalMap.put("tFileOutputDelimited_2_FILE_NAME", fileName_tFileOutputDelimited_2);
+
+				resourceMap.put("finish_tFileOutputDelimited_2", true);
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "out1");
+				}
+
+				ok_Hash.put("tFileOutputDelimited_2", true);
+				end_Hash.put("tFileOutputDelimited_2", System.currentTimeMillis());
+
+				/**
+				 * [tFileOutputDelimited_2 end ] stop
+				 */
+
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tFileInputDelimited_2 finally ] start
+				 */
+
+				currentComponent = "tFileInputDelimited_2";
+
+				/**
+				 * [tFileInputDelimited_2 finally ] stop
+				 */
+
+				/**
+				 * [tMap_1 finally ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+				/**
+				 * [tMap_1 finally ] stop
+				 */
+
+				/**
+				 * [tFileOutputDelimited_2 finally ] start
+				 */
+
+				currentComponent = "tFileOutputDelimited_2";
+
+				if (resourceMap.get("finish_tFileOutputDelimited_2") == null) {
+
+					java.io.Writer outtFileOutputDelimited_2 = (java.io.Writer) resourceMap
+							.get("out_tFileOutputDelimited_2");
+					if (outtFileOutputDelimited_2 != null) {
+						outtFileOutputDelimited_2.flush();
+						outtFileOutputDelimited_2.close();
+					}
+
+				}
+
+				/**
+				 * [tFileOutputDelimited_2 finally ] stop
+				 */
+
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tFileInputDelimited_2_SUBPROCESS_STATE", 1);
+	}
+
 	public String resuming_logs_dir_path = null;
 	public String resuming_checkpoint_path = null;
 	public String parent_part_launcher = null;
@@ -3285,6 +5322,18 @@ public class completude_medals implements TalendJob {
 			e_tFileInputDelimited_1.printStackTrace();
 
 		}
+		try {
+			errorCode = null;
+			tFileInputDelimited_2Process(globalMap);
+			if (!"failure".equals(status)) {
+				status = "end";
+			}
+		} catch (TalendException e_tFileInputDelimited_2) {
+			globalMap.put("tFileInputDelimited_2_SUBPROCESS_STATE", -1);
+
+			e_tFileInputDelimited_2.printStackTrace();
+
+		}
 
 		this.globalResumeTicket = true;// to run tPostJob
 
@@ -3438,6 +5487,6 @@ public class completude_medals implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 106344 characters generated by Talend Open Studio for Data Integration on the
- * 3 janvier 2025 à 09:58:28 CET
+ * 172446 characters generated by Talend Open Studio for Data Integration on the
+ * 8 janvier 2025 à 14:35:18 CET
  ************************************************************************************************/

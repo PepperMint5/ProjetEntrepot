@@ -1,0 +1,112 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<expression:EMFExpression xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:expression="http:///expression.ecore" id="tMap_1=>" expression="row7.other_sports == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.other_sports">
+  <variables name="row7.code" value="null" talendType="id_Integer" nullable="true"/>
+  <variables name="row7.current" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.name" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.name_short" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.name_tv" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.gender" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.function" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.country_code" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.country_long" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.nationality" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.nationality_long" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.nationality_code" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.height" value="null" talendType="id_Float" nullable="true"/>
+  <variables name="row7.weight" value="null" talendType="id_Float" nullable="true"/>
+  <variables name="row7.disciplines" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.events" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.birth_date" value="null" talendType="id_Date" nullable="true"/>
+  <variables name="row7.birth_place" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.birth_country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.residence_place" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.residence_country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.nickname" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.hobbies" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.occupation" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.education" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.family" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.lang" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.coach" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.reason" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.hero" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.influence" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.philosophy" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.sporting_relatives" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.ritual" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.other_sports" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.errorMessage" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.height == null || row7.height == 0? &quot;UNKNOWN&quot; : row7.height " value="0" talendType="id_Float"/>
+  <variables name="row7.weight == null || row7.weight == 0? &quot;UNKNOWN&quot; : row7.weight " value="null" talendType="id_String"/>
+  <variables name="row7.height == null || row7.height == 0? &quot;UNKNOWN&quot; : String.valueOf(row7.height) " value="null" talendType="id_String"/>
+  <variables name="row3.code" value="null" talendType="id_Integer" nullable="true"/>
+  <variables name="row3.current" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.name" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.name_short" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.name_tv" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.gender" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.function" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.country_code" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.country_long" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.nationality" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.nationality_long" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.nationality_code" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.height" value="null" talendType="id_Float" nullable="true"/>
+  <variables name="row3.weight" value="null" talendType="id_Float" nullable="true"/>
+  <variables name="row3.disciplines" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.events" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.birth_date" value="null" talendType="id_Date" nullable="true"/>
+  <variables name="row3.birth_place" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.birth_country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.residence_place" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.residence_country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.nickname" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.hobbies" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.occupation" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.education" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.family" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.lang" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.coach" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.reason" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.hero" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.influence" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.philosophy" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.sporting_relatives" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.ritual" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row3.other_sports" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.weight == null || row7.weight == 0? &quot;UNKNOWN&quot; : String.valueOf(row7.weight) " value="null" talendType="id_String"/>
+  <variables name="row3.height == null || row3.height == 0? &quot;UNKNOWN&quot; : String.valueOf(row3.height) " value="null" talendType="id_String"/>
+  <variables name="row3.weight == null || row3.weight == 0? &quot;UNKNOWN&quot; : String.valueOf(row3.weight) " value="null" talendType="id_String"/>
+  <variables name="row3.nationality == &quot;&quot; ? &quot;UNKNOWN&quot; : String.valueOf(row3.nationality) " value="null" talendType="id_String"/>
+  <variables name="row3.height == null || row3.height == &quot;0&quot;? &quot;UNKNOWN&quot; : String.valueOf(row3.height) " value="null" talendType="id_String"/>
+  <variables name="row3.weight == null || row3.weight == &quot;0.0&quot;? &quot;UNKNOWN&quot; : String.valueOf(row3.weight) " value="null" talendType="id_String"/>
+  <variables name="row3.height == null || row3.height == &quot;0.0&quot;? &quot;UNKNOWN&quot; : String.valueOf(row3.height) " value="null" talendType="id_String"/>
+  <variables name="row3.weight == null || row3.weight == &quot;0.0&quot;? &quot;UNKNOWN&quot; : String.valueOf(row3.weight " value="null" talendType="id_String"/>
+  <variables name="row3.height == null || row3.height == 0 ? &quot;UNKNOWN&quot; : String.valueOf(row3.height) " value="null" talendType="id_String"/>
+  <variables name="row7.height == null || row7.height == 0 ? &quot;UNKNOWN&quot; : String.valueOf(row7.height) " value="null" talendType="id_String"/>
+  <variables name="row7.nationality == &quot;&quot; ? &quot;UNKNOWN&quot; : String.valueOf(row7.nationality) " value="null" talendType="id_String"/>
+  <variables name="row7.nationality == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.nationality" value="null" talendType="id_String"/>
+  <variables name="row7.nationality_long == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.nationality " value="null" talendType="id_String"/>
+  <variables name="row7.nationality_code == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.nationality " value="null" talendType="id_String"/>
+  <variables name="row7.birth_place == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.birth_place " value="null" talendType="id_String"/>
+  <variables name="row7.birth_country ==&quot;&quot; ? &quot;UNKNOWN : row7.birth_country" value="null" talendType="id_String"/>
+  <variables name="row7.birth_country == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.birth_country " value="null" talendType="id_String"/>
+  <variables name="" value="null" talendType="id_String"/>
+  <variables name="row7.residence_place == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.residence_place " value="null" talendType="id_String"/>
+  <variables name="row7.residence_country == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.residence_country " value="null" talendType="id_String"/>
+  <variables name="row7.nickname == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.nickname " value="null" talendType="id_String"/>
+  <variables name="row7.hobbies == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.hobbies " value="null" talendType="id_String"/>
+  <variables name="row7.occupation == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.occupation " value="null" talendType="id_String"/>
+  <variables name="row7.education == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.education " value="null" talendType="id_String"/>
+  <variables name="row7.family == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.family " value="null" talendType="id_String"/>
+  <variables name="row7.lang == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.lang " value="null" talendType="id_String"/>
+  <variables name="row7.coach == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.coach " value="null" talendType="id_String"/>
+  <variables name="row7.reason == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.reason " value="null" talendType="id_String"/>
+  <variables name="row7.hero == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.hero " value="null" talendType="id_String"/>
+  <variables name="row7.influence == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.influence " value="null" talendType="id_String"/>
+  <variables name="row7.philosophy == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.philosophy " value="null" talendType="id_String"/>
+  <variables name="row7.sporting_relatives == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.sporting_relatives " value="null" talendType="id_String"/>
+  <variables name="row7.ritual == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.ritual " value="null" talendType="id_String"/>
+</expression:EMFExpression>

@@ -47,7 +47,7 @@ import java.util.Comparator;
  * Job: completude_teams Purpose: <br>
  * Description: <br>
  * 
- * @author user@talend.com
+ * @author
  * @version 8.0.1.20211109_1610
  * @status
  */
@@ -404,6 +404,36 @@ public class completude_teams implements TalendJob {
 		tFileInputDelimited_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tFileInputDelimited_4_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_4_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_4_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tFileOutputDelimited_2_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_4_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_1_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -421,6 +451,14 @@ public class completude_teams implements TalendJob {
 	}
 
 	public void tFileInputDelimited_3_onSubJobError(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_4_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
@@ -8689,6 +8727,1995 @@ public class completude_teams implements TalendJob {
 		globalMap.put("tFileInputDelimited_3_SUBPROCESS_STATE", 1);
 	}
 
+	public static class out1Struct implements routines.system.IPersistableRow<out1Struct> {
+		final static byte[] commonByteArrayLock_PROJETTALEND1_completude_teams = new byte[0];
+		static byte[] commonByteArray_PROJETTALEND1_completude_teams = new byte[0];
+
+		public String code;
+
+		public String getCode() {
+			return this.code;
+		}
+
+		public String current;
+
+		public String getCurrent() {
+			return this.current;
+		}
+
+		public String team;
+
+		public String getTeam() {
+			return this.team;
+		}
+
+		public Character team_gender;
+
+		public Character getTeam_gender() {
+			return this.team_gender;
+		}
+
+		public String country_code;
+
+		public String getCountry_code() {
+			return this.country_code;
+		}
+
+		public String country;
+
+		public String getCountry() {
+			return this.country;
+		}
+
+		public String country_long;
+
+		public String getCountry_long() {
+			return this.country_long;
+		}
+
+		public String discipline;
+
+		public String getDiscipline() {
+			return this.discipline;
+		}
+
+		public String disciplines_code;
+
+		public String getDisciplines_code() {
+			return this.disciplines_code;
+		}
+
+		public String events;
+
+		public String getEvents() {
+			return this.events;
+		}
+
+		public String coaches;
+
+		public String getCoaches() {
+			return this.coaches;
+		}
+
+		public String athletes;
+
+		public String getAthletes() {
+			return this.athletes;
+		}
+
+		public String athletes_codes;
+
+		public String getAthletes_codes() {
+			return this.athletes_codes;
+		}
+
+		public String num_athletes;
+
+		public String getNum_athletes() {
+			return this.num_athletes;
+		}
+
+		public String coaches_codes;
+
+		public String getCoaches_codes() {
+			return this.coaches_codes;
+		}
+
+		public String num_coaches;
+
+		public String getNum_coaches() {
+			return this.num_coaches;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_teams.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_teams.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_PROJETTALEND1_completude_teams, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_teams, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = unmarshaller.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_teams.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_teams.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[2 * length];
+					}
+				}
+				unmarshaller.readFully(commonByteArray_PROJETTALEND1_completude_teams, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_teams, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (str == null) {
+				marshaller.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				marshaller.writeInt(byteArray.length);
+				marshaller.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_teams) {
+
+				try {
+
+					int length = 0;
+
+					this.code = readString(dis);
+
+					this.current = readString(dis);
+
+					this.team = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.team_gender = null;
+					} else {
+						this.team_gender = dis.readChar();
+					}
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+					this.discipline = readString(dis);
+
+					this.disciplines_code = readString(dis);
+
+					this.events = readString(dis);
+
+					this.coaches = readString(dis);
+
+					this.athletes = readString(dis);
+
+					this.athletes_codes = readString(dis);
+
+					this.num_athletes = readString(dis);
+
+					this.coaches_codes = readString(dis);
+
+					this.num_coaches = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_teams) {
+
+				try {
+
+					int length = 0;
+
+					this.code = readString(dis);
+
+					this.current = readString(dis);
+
+					this.team = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.team_gender = null;
+					} else {
+						this.team_gender = dis.readChar();
+					}
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+					this.discipline = readString(dis);
+
+					this.disciplines_code = readString(dis);
+
+					this.events = readString(dis);
+
+					this.coaches = readString(dis);
+
+					this.athletes = readString(dis);
+
+					this.athletes_codes = readString(dis);
+
+					this.num_athletes = readString(dis);
+
+					this.coaches_codes = readString(dis);
+
+					this.num_coaches = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.current, dos);
+
+				// String
+
+				writeString(this.team, dos);
+
+				// Character
+
+				if (this.team_gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.team_gender);
+				}
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.disciplines_code, dos);
+
+				// String
+
+				writeString(this.events, dos);
+
+				// String
+
+				writeString(this.coaches, dos);
+
+				// String
+
+				writeString(this.athletes, dos);
+
+				// String
+
+				writeString(this.athletes_codes, dos);
+
+				// String
+
+				writeString(this.num_athletes, dos);
+
+				// String
+
+				writeString(this.coaches_codes, dos);
+
+				// String
+
+				writeString(this.num_coaches, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public void writeData(org.jboss.marshalling.Marshaller dos) {
+			try {
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.current, dos);
+
+				// String
+
+				writeString(this.team, dos);
+
+				// Character
+
+				if (this.team_gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.team_gender);
+				}
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.disciplines_code, dos);
+
+				// String
+
+				writeString(this.events, dos);
+
+				// String
+
+				writeString(this.coaches, dos);
+
+				// String
+
+				writeString(this.athletes, dos);
+
+				// String
+
+				writeString(this.athletes_codes, dos);
+
+				// String
+
+				writeString(this.num_athletes, dos);
+
+				// String
+
+				writeString(this.coaches_codes, dos);
+
+				// String
+
+				writeString(this.num_coaches, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("code=" + code);
+			sb.append(",current=" + current);
+			sb.append(",team=" + team);
+			sb.append(",team_gender=" + String.valueOf(team_gender));
+			sb.append(",country_code=" + country_code);
+			sb.append(",country=" + country);
+			sb.append(",country_long=" + country_long);
+			sb.append(",discipline=" + discipline);
+			sb.append(",disciplines_code=" + disciplines_code);
+			sb.append(",events=" + events);
+			sb.append(",coaches=" + coaches);
+			sb.append(",athletes=" + athletes);
+			sb.append(",athletes_codes=" + athletes_codes);
+			sb.append(",num_athletes=" + num_athletes);
+			sb.append(",coaches_codes=" + coaches_codes);
+			sb.append(",num_coaches=" + num_coaches);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(out1Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row10Struct implements routines.system.IPersistableRow<row10Struct> {
+		final static byte[] commonByteArrayLock_PROJETTALEND1_completude_teams = new byte[0];
+		static byte[] commonByteArray_PROJETTALEND1_completude_teams = new byte[0];
+
+		public String code;
+
+		public String getCode() {
+			return this.code;
+		}
+
+		public String current;
+
+		public String getCurrent() {
+			return this.current;
+		}
+
+		public String team;
+
+		public String getTeam() {
+			return this.team;
+		}
+
+		public Character team_gender;
+
+		public Character getTeam_gender() {
+			return this.team_gender;
+		}
+
+		public String country_code;
+
+		public String getCountry_code() {
+			return this.country_code;
+		}
+
+		public String country;
+
+		public String getCountry() {
+			return this.country;
+		}
+
+		public String country_long;
+
+		public String getCountry_long() {
+			return this.country_long;
+		}
+
+		public String discipline;
+
+		public String getDiscipline() {
+			return this.discipline;
+		}
+
+		public String disciplines_code;
+
+		public String getDisciplines_code() {
+			return this.disciplines_code;
+		}
+
+		public String events;
+
+		public String getEvents() {
+			return this.events;
+		}
+
+		public String athletes;
+
+		public String getAthletes() {
+			return this.athletes;
+		}
+
+		public String coaches;
+
+		public String getCoaches() {
+			return this.coaches;
+		}
+
+		public String athletes_codes;
+
+		public String getAthletes_codes() {
+			return this.athletes_codes;
+		}
+
+		public String num_athletes;
+
+		public String getNum_athletes() {
+			return this.num_athletes;
+		}
+
+		public String coaches_codes;
+
+		public String getCoaches_codes() {
+			return this.coaches_codes;
+		}
+
+		public String num_coaches;
+
+		public String getNum_coaches() {
+			return this.num_coaches;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_teams.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_teams.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_PROJETTALEND1_completude_teams, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_teams, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = unmarshaller.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJETTALEND1_completude_teams.length) {
+					if (length < 1024 && commonByteArray_PROJETTALEND1_completude_teams.length == 0) {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[1024];
+					} else {
+						commonByteArray_PROJETTALEND1_completude_teams = new byte[2 * length];
+					}
+				}
+				unmarshaller.readFully(commonByteArray_PROJETTALEND1_completude_teams, 0, length);
+				strReturn = new String(commonByteArray_PROJETTALEND1_completude_teams, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (str == null) {
+				marshaller.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				marshaller.writeInt(byteArray.length);
+				marshaller.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_teams) {
+
+				try {
+
+					int length = 0;
+
+					this.code = readString(dis);
+
+					this.current = readString(dis);
+
+					this.team = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.team_gender = null;
+					} else {
+						this.team_gender = dis.readChar();
+					}
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+					this.discipline = readString(dis);
+
+					this.disciplines_code = readString(dis);
+
+					this.events = readString(dis);
+
+					this.athletes = readString(dis);
+
+					this.coaches = readString(dis);
+
+					this.athletes_codes = readString(dis);
+
+					this.num_athletes = readString(dis);
+
+					this.coaches_codes = readString(dis);
+
+					this.num_coaches = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+			synchronized (commonByteArrayLock_PROJETTALEND1_completude_teams) {
+
+				try {
+
+					int length = 0;
+
+					this.code = readString(dis);
+
+					this.current = readString(dis);
+
+					this.team = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.team_gender = null;
+					} else {
+						this.team_gender = dis.readChar();
+					}
+
+					this.country_code = readString(dis);
+
+					this.country = readString(dis);
+
+					this.country_long = readString(dis);
+
+					this.discipline = readString(dis);
+
+					this.disciplines_code = readString(dis);
+
+					this.events = readString(dis);
+
+					this.athletes = readString(dis);
+
+					this.coaches = readString(dis);
+
+					this.athletes_codes = readString(dis);
+
+					this.num_athletes = readString(dis);
+
+					this.coaches_codes = readString(dis);
+
+					this.num_coaches = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.current, dos);
+
+				// String
+
+				writeString(this.team, dos);
+
+				// Character
+
+				if (this.team_gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.team_gender);
+				}
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.disciplines_code, dos);
+
+				// String
+
+				writeString(this.events, dos);
+
+				// String
+
+				writeString(this.athletes, dos);
+
+				// String
+
+				writeString(this.coaches, dos);
+
+				// String
+
+				writeString(this.athletes_codes, dos);
+
+				// String
+
+				writeString(this.num_athletes, dos);
+
+				// String
+
+				writeString(this.coaches_codes, dos);
+
+				// String
+
+				writeString(this.num_coaches, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public void writeData(org.jboss.marshalling.Marshaller dos) {
+			try {
+
+				// String
+
+				writeString(this.code, dos);
+
+				// String
+
+				writeString(this.current, dos);
+
+				// String
+
+				writeString(this.team, dos);
+
+				// Character
+
+				if (this.team_gender == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeChar(this.team_gender);
+				}
+
+				// String
+
+				writeString(this.country_code, dos);
+
+				// String
+
+				writeString(this.country, dos);
+
+				// String
+
+				writeString(this.country_long, dos);
+
+				// String
+
+				writeString(this.discipline, dos);
+
+				// String
+
+				writeString(this.disciplines_code, dos);
+
+				// String
+
+				writeString(this.events, dos);
+
+				// String
+
+				writeString(this.athletes, dos);
+
+				// String
+
+				writeString(this.coaches, dos);
+
+				// String
+
+				writeString(this.athletes_codes, dos);
+
+				// String
+
+				writeString(this.num_athletes, dos);
+
+				// String
+
+				writeString(this.coaches_codes, dos);
+
+				// String
+
+				writeString(this.num_coaches, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("code=" + code);
+			sb.append(",current=" + current);
+			sb.append(",team=" + team);
+			sb.append(",team_gender=" + String.valueOf(team_gender));
+			sb.append(",country_code=" + country_code);
+			sb.append(",country=" + country);
+			sb.append(",country_long=" + country_long);
+			sb.append(",discipline=" + discipline);
+			sb.append(",disciplines_code=" + disciplines_code);
+			sb.append(",events=" + events);
+			sb.append(",athletes=" + athletes);
+			sb.append(",coaches=" + coaches);
+			sb.append(",athletes_codes=" + athletes_codes);
+			sb.append(",num_athletes=" + num_athletes);
+			sb.append(",coaches_codes=" + coaches_codes);
+			sb.append(",num_coaches=" + num_coaches);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row10Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_4Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tFileInputDelimited_4_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				row10Struct row10 = new row10Struct();
+				out1Struct out1 = new out1Struct();
+
+				/**
+				 * [tFileOutputDelimited_2 begin ] start
+				 */
+
+				ok_Hash.put("tFileOutputDelimited_2", false);
+				start_Hash.put("tFileOutputDelimited_2", System.currentTimeMillis());
+
+				currentComponent = "tFileOutputDelimited_2";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "out1");
+				}
+
+				int tos_count_tFileOutputDelimited_2 = 0;
+
+				String fileName_tFileOutputDelimited_2 = "";
+				fileName_tFileOutputDelimited_2 = (new java.io.File(
+						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/ProjetEntrepot/output/cleanProcess/teams_cleaned.csv"))
+								.getAbsolutePath().replace("\\", "/");
+				String fullName_tFileOutputDelimited_2 = null;
+				String extension_tFileOutputDelimited_2 = null;
+				String directory_tFileOutputDelimited_2 = null;
+				if ((fileName_tFileOutputDelimited_2.indexOf("/") != -1)) {
+					if (fileName_tFileOutputDelimited_2.lastIndexOf(".") < fileName_tFileOutputDelimited_2
+							.lastIndexOf("/")) {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2;
+						extension_tFileOutputDelimited_2 = "";
+					} else {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2.substring(0,
+								fileName_tFileOutputDelimited_2.lastIndexOf("."));
+						extension_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2
+								.substring(fileName_tFileOutputDelimited_2.lastIndexOf("."));
+					}
+					directory_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2.substring(0,
+							fileName_tFileOutputDelimited_2.lastIndexOf("/"));
+				} else {
+					if (fileName_tFileOutputDelimited_2.lastIndexOf(".") != -1) {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2.substring(0,
+								fileName_tFileOutputDelimited_2.lastIndexOf("."));
+						extension_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2
+								.substring(fileName_tFileOutputDelimited_2.lastIndexOf("."));
+					} else {
+						fullName_tFileOutputDelimited_2 = fileName_tFileOutputDelimited_2;
+						extension_tFileOutputDelimited_2 = "";
+					}
+					directory_tFileOutputDelimited_2 = "";
+				}
+				boolean isFileGenerated_tFileOutputDelimited_2 = true;
+				java.io.File filetFileOutputDelimited_2 = new java.io.File(fileName_tFileOutputDelimited_2);
+				globalMap.put("tFileOutputDelimited_2_FILE_NAME", fileName_tFileOutputDelimited_2);
+				if (filetFileOutputDelimited_2.exists()) {
+					throw new RuntimeException("The particular file \"" + filetFileOutputDelimited_2.getAbsoluteFile()
+							+ "\" already exist. If you want to overwrite the file, please uncheck the"
+							+ " \"Throw an error if the file already exist\" option in Advanced settings.");
+				}
+				int nb_line_tFileOutputDelimited_2 = 0;
+				int splitedFileNo_tFileOutputDelimited_2 = 0;
+				int currentRow_tFileOutputDelimited_2 = 0;
+
+				final String OUT_DELIM_tFileOutputDelimited_2 = /** Start field tFileOutputDelimited_2:FIELDSEPARATOR */
+						";"/** End field tFileOutputDelimited_2:FIELDSEPARATOR */
+				;
+
+				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_2 = /**
+																		 * Start field
+																		 * tFileOutputDelimited_2:ROWSEPARATOR
+																		 */
+						"\n"/** End field tFileOutputDelimited_2:ROWSEPARATOR */
+				;
+
+				// create directory only if not exists
+				if (directory_tFileOutputDelimited_2 != null && directory_tFileOutputDelimited_2.trim().length() != 0) {
+					java.io.File dir_tFileOutputDelimited_2 = new java.io.File(directory_tFileOutputDelimited_2);
+					if (!dir_tFileOutputDelimited_2.exists()) {
+						dir_tFileOutputDelimited_2.mkdirs();
+					}
+				}
+
+				// routines.system.Row
+				java.io.Writer outtFileOutputDelimited_2 = null;
+
+				java.io.File fileToDelete_tFileOutputDelimited_2 = new java.io.File(fileName_tFileOutputDelimited_2);
+				if (fileToDelete_tFileOutputDelimited_2.exists()) {
+					fileToDelete_tFileOutputDelimited_2.delete();
+				}
+				outtFileOutputDelimited_2 = new java.io.BufferedWriter(new java.io.OutputStreamWriter(
+						new java.io.FileOutputStream(fileName_tFileOutputDelimited_2, false), "ISO-8859-15"));
+				if (filetFileOutputDelimited_2.length() == 0) {
+					outtFileOutputDelimited_2.write("code");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("current");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("team");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("team_gender");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("country_code");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("country");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("country_long");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("discipline");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("disciplines_code");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("events");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("coaches");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("athletes");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("athletes_codes");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("num_athletes");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("coaches_codes");
+					outtFileOutputDelimited_2.write(OUT_DELIM_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.write("num_coaches");
+					outtFileOutputDelimited_2.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_2);
+					outtFileOutputDelimited_2.flush();
+				}
+
+				resourceMap.put("out_tFileOutputDelimited_2", outtFileOutputDelimited_2);
+				resourceMap.put("nb_line_tFileOutputDelimited_2", nb_line_tFileOutputDelimited_2);
+
+				/**
+				 * [tFileOutputDelimited_2 begin ] stop
+				 */
+
+				/**
+				 * [tMap_1 begin ] start
+				 */
+
+				ok_Hash.put("tMap_1", false);
+				start_Hash.put("tMap_1", System.currentTimeMillis());
+
+				currentComponent = "tMap_1";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row10");
+				}
+
+				int tos_count_tMap_1 = 0;
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_1__Struct {
+					String coaches;
+					String athletes;
+					String athletes_codes;
+					String num_athletes;
+					String coaches_codes;
+					String num_coaches;
+				}
+				Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				out1Struct out1_tmp = new out1Struct();
+// ###############################
+
+				/**
+				 * [tMap_1 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_4 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_4", false);
+				start_Hash.put("tFileInputDelimited_4", System.currentTimeMillis());
+
+				currentComponent = "tFileInputDelimited_4";
+
+				int tos_count_tFileInputDelimited_4 = 0;
+
+				final routines.system.RowState rowstate_tFileInputDelimited_4 = new routines.system.RowState();
+
+				int nb_line_tFileInputDelimited_4 = 0;
+				int footer_tFileInputDelimited_4 = 0;
+				int totalLinetFileInputDelimited_4 = 0;
+				int limittFileInputDelimited_4 = -1;
+				int lastLinetFileInputDelimited_4 = -1;
+
+				char fieldSeparator_tFileInputDelimited_4[] = null;
+
+				// support passing value (property: Field Separator) by 'context.fs' or
+				// 'globalMap.get("fs")'.
+				if (((String) ",").length() > 0) {
+					fieldSeparator_tFileInputDelimited_4 = ((String) ",").toCharArray();
+				} else {
+					throw new IllegalArgumentException("Field Separator must be assigned a char.");
+				}
+
+				char rowSeparator_tFileInputDelimited_4[] = null;
+
+				// support passing value (property: Row Separator) by 'context.rs' or
+				// 'globalMap.get("rs")'.
+				if (((String) "\n").length() > 0) {
+					rowSeparator_tFileInputDelimited_4 = ((String) "\n").toCharArray();
+				} else {
+					throw new IllegalArgumentException("Row Separator must be assigned a char.");
+				}
+
+				Object filename_tFileInputDelimited_4 = /** Start field tFileInputDelimited_4:FILENAME */
+						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/TP_Donnees_JO_Paris_2024/teams.csv"/**
+																																 * End
+																																 * field
+																																 * tFileInputDelimited_4:FILENAME
+																																 */
+				;
+				com.talend.csv.CSVReader csvReadertFileInputDelimited_4 = null;
+
+				try {
+
+					String[] rowtFileInputDelimited_4 = null;
+					int currentLinetFileInputDelimited_4 = 0;
+					int outputLinetFileInputDelimited_4 = 0;
+					try {// TD110 begin
+						if (filename_tFileInputDelimited_4 instanceof java.io.InputStream) {
+
+							int footer_value_tFileInputDelimited_4 = 0;
+							if (footer_value_tFileInputDelimited_4 > 0) {
+								throw new java.lang.Exception(
+										"When the input source is a stream,footer shouldn't be bigger than 0.");
+							}
+
+							csvReadertFileInputDelimited_4 = new com.talend.csv.CSVReader(
+									(java.io.InputStream) filename_tFileInputDelimited_4,
+									fieldSeparator_tFileInputDelimited_4[0], "UTF-8");
+						} else {
+							csvReadertFileInputDelimited_4 = new com.talend.csv.CSVReader(
+									String.valueOf(filename_tFileInputDelimited_4),
+									fieldSeparator_tFileInputDelimited_4[0], "UTF-8");
+						}
+
+						csvReadertFileInputDelimited_4.setTrimWhitespace(false);
+						if ((rowSeparator_tFileInputDelimited_4[0] != '\n')
+								&& (rowSeparator_tFileInputDelimited_4[0] != '\r'))
+							csvReadertFileInputDelimited_4.setLineEnd("" + rowSeparator_tFileInputDelimited_4[0]);
+
+						csvReadertFileInputDelimited_4.setQuoteChar('"');
+
+						csvReadertFileInputDelimited_4.setEscapeChar(csvReadertFileInputDelimited_4.getQuoteChar());
+
+						if (footer_tFileInputDelimited_4 > 0) {
+							for (totalLinetFileInputDelimited_4 = 0; totalLinetFileInputDelimited_4 < 1; totalLinetFileInputDelimited_4++) {
+								csvReadertFileInputDelimited_4.readNext();
+							}
+							csvReadertFileInputDelimited_4.setSkipEmptyRecords(false);
+							while (csvReadertFileInputDelimited_4.readNext()) {
+
+								totalLinetFileInputDelimited_4++;
+
+							}
+							int lastLineTemptFileInputDelimited_4 = totalLinetFileInputDelimited_4
+									- footer_tFileInputDelimited_4 < 0 ? 0
+											: totalLinetFileInputDelimited_4 - footer_tFileInputDelimited_4;
+							if (lastLinetFileInputDelimited_4 > 0) {
+								lastLinetFileInputDelimited_4 = lastLinetFileInputDelimited_4 < lastLineTemptFileInputDelimited_4
+										? lastLinetFileInputDelimited_4
+										: lastLineTemptFileInputDelimited_4;
+							} else {
+								lastLinetFileInputDelimited_4 = lastLineTemptFileInputDelimited_4;
+							}
+
+							csvReadertFileInputDelimited_4.close();
+							if (filename_tFileInputDelimited_4 instanceof java.io.InputStream) {
+								csvReadertFileInputDelimited_4 = new com.talend.csv.CSVReader(
+										(java.io.InputStream) filename_tFileInputDelimited_4,
+										fieldSeparator_tFileInputDelimited_4[0], "UTF-8");
+							} else {
+								csvReadertFileInputDelimited_4 = new com.talend.csv.CSVReader(
+										String.valueOf(filename_tFileInputDelimited_4),
+										fieldSeparator_tFileInputDelimited_4[0], "UTF-8");
+							}
+							csvReadertFileInputDelimited_4.setTrimWhitespace(false);
+							if ((rowSeparator_tFileInputDelimited_4[0] != '\n')
+									&& (rowSeparator_tFileInputDelimited_4[0] != '\r'))
+								csvReadertFileInputDelimited_4.setLineEnd("" + rowSeparator_tFileInputDelimited_4[0]);
+
+							csvReadertFileInputDelimited_4.setQuoteChar('"');
+
+							csvReadertFileInputDelimited_4.setEscapeChar(csvReadertFileInputDelimited_4.getQuoteChar());
+
+						}
+
+						if (limittFileInputDelimited_4 != 0) {
+							for (currentLinetFileInputDelimited_4 = 0; currentLinetFileInputDelimited_4 < 1; currentLinetFileInputDelimited_4++) {
+								csvReadertFileInputDelimited_4.readNext();
+							}
+						}
+						csvReadertFileInputDelimited_4.setSkipEmptyRecords(false);
+
+					} catch (java.lang.Exception e) {
+						globalMap.put("tFileInputDelimited_4_ERROR_MESSAGE", e.getMessage());
+
+						System.err.println(e.getMessage());
+
+					} // TD110 end
+
+					while (limittFileInputDelimited_4 != 0 && csvReadertFileInputDelimited_4 != null
+							&& csvReadertFileInputDelimited_4.readNext()) {
+						rowstate_tFileInputDelimited_4.reset();
+
+						rowtFileInputDelimited_4 = csvReadertFileInputDelimited_4.getValues();
+
+						currentLinetFileInputDelimited_4++;
+
+						if (lastLinetFileInputDelimited_4 > -1
+								&& currentLinetFileInputDelimited_4 > lastLinetFileInputDelimited_4) {
+							break;
+						}
+						outputLinetFileInputDelimited_4++;
+						if (limittFileInputDelimited_4 > 0
+								&& outputLinetFileInputDelimited_4 > limittFileInputDelimited_4) {
+							break;
+						}
+
+						row10 = null;
+
+						boolean whetherReject_tFileInputDelimited_4 = false;
+						row10 = new row10Struct();
+						try {
+
+							char fieldSeparator_tFileInputDelimited_4_ListType[] = null;
+							// support passing value (property: Field Separator) by 'context.fs' or
+							// 'globalMap.get("fs")'.
+							if (((String) ",").length() > 0) {
+								fieldSeparator_tFileInputDelimited_4_ListType = ((String) ",").toCharArray();
+							} else {
+								throw new IllegalArgumentException("Field Separator must be assigned a char.");
+							}
+							if (rowtFileInputDelimited_4.length == 1 && ("\015").equals(rowtFileInputDelimited_4[0])) {// empty
+																														// line
+																														// when
+																														// row
+																														// separator
+																														// is
+																														// '\n'
+
+								row10.code = null;
+
+								row10.current = null;
+
+								row10.team = null;
+
+								row10.team_gender = null;
+
+								row10.country_code = null;
+
+								row10.country = null;
+
+								row10.country_long = null;
+
+								row10.discipline = null;
+
+								row10.disciplines_code = null;
+
+								row10.events = null;
+
+								row10.athletes = null;
+
+								row10.coaches = null;
+
+								row10.athletes_codes = null;
+
+								row10.num_athletes = null;
+
+								row10.coaches_codes = null;
+
+								row10.num_coaches = null;
+
+							} else {
+
+								int columnIndexWithD_tFileInputDelimited_4 = 0; // Column Index
+
+								columnIndexWithD_tFileInputDelimited_4 = 0;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.code = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.code = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 1;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.current = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.current = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 2;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.team = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.team = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 3;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									if (rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4].length() > 0) {
+										try {
+
+											row10.team_gender = ParserUtils.parseTo_Character(
+													rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4]);
+
+										} catch (java.lang.Exception ex_tFileInputDelimited_4) {
+											globalMap.put("tFileInputDelimited_4_ERROR_MESSAGE",
+													ex_tFileInputDelimited_4.getMessage());
+											rowstate_tFileInputDelimited_4.setException(new RuntimeException(String
+													.format("Couldn't parse value for column '%s' in '%s', value is '%s'. Details: %s",
+															"team_gender", "row10",
+															rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4],
+															ex_tFileInputDelimited_4),
+													ex_tFileInputDelimited_4));
+										}
+									} else {
+
+										row10.team_gender = null;
+
+									}
+
+								} else {
+
+									row10.team_gender = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 4;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.country_code = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.country_code = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 5;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.country = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.country = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 6;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.country_long = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.country_long = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 7;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.discipline = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.discipline = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 8;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.disciplines_code = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.disciplines_code = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 9;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.events = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.events = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 10;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.athletes = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.athletes = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 11;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.coaches = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.coaches = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 12;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.athletes_codes = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.athletes_codes = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 13;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.num_athletes = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.num_athletes = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 14;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.coaches_codes = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.coaches_codes = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_4 = 15;
+
+								if (columnIndexWithD_tFileInputDelimited_4 < rowtFileInputDelimited_4.length) {
+
+									row10.num_coaches = rowtFileInputDelimited_4[columnIndexWithD_tFileInputDelimited_4];
+
+								} else {
+
+									row10.num_coaches = null;
+
+								}
+
+							}
+
+							if (rowstate_tFileInputDelimited_4.getException() != null) {
+								throw rowstate_tFileInputDelimited_4.getException();
+							}
+
+						} catch (java.lang.Exception e) {
+							globalMap.put("tFileInputDelimited_4_ERROR_MESSAGE", e.getMessage());
+							whetherReject_tFileInputDelimited_4 = true;
+
+							System.err.println(e.getMessage());
+							row10 = null;
+
+							globalMap.put("tFileInputDelimited_4_ERROR_MESSAGE", e.getMessage());
+
+						}
+
+						/**
+						 * [tFileInputDelimited_4 begin ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_4 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_4";
+
+						tos_count_tFileInputDelimited_4++;
+
+						/**
+						 * [tFileInputDelimited_4 main ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_4 process_data_begin ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_4";
+
+						/**
+						 * [tFileInputDelimited_4 process_data_begin ] stop
+						 */
+// Start of branch "row10"
+						if (row10 != null) {
+
+							/**
+							 * [tMap_1 main ] start
+							 */
+
+							currentComponent = "tMap_1";
+
+							if (execStat) {
+								runStat.updateStatOnConnection(iterateId, 1, 1
+
+										, "row10"
+
+								);
+							}
+
+							boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
+
+							// ###############################
+							// # Input tables (lookups)
+							boolean rejectedInnerJoin_tMap_1 = false;
+							boolean mainRowRejected_tMap_1 = false;
+
+							// ###############################
+							{ // start of Var scope
+
+								// ###############################
+								// # Vars tables
+
+								Var__tMap_1__Struct Var = Var__tMap_1;
+								Var.coaches = row10.coaches == "" ? "UNKNOWN" : row10.coaches;
+								Var.athletes = row10.athletes == "" ? "UNKNOWN" : row10.athletes;
+								Var.athletes_codes = row10.athletes_codes == "" ? "UNKNOWN" : row10.athletes_codes;
+								Var.num_athletes = row10.num_athletes == "" ? "UNKNOWN" : row10.num_athletes;
+								Var.coaches_codes = row10.coaches_codes == "" ? "UNKNOWN" : row10.coaches_codes;
+								Var.num_coaches = row10.num_coaches == "" ? "UNKNOWN" : row10.num_coaches;// ###############################
+								// ###############################
+								// # Output tables
+
+								out1 = null;
+
+// # Output table : 'out1'
+								out1_tmp.code = row10.code;
+								out1_tmp.current = row10.current;
+								out1_tmp.team = row10.team;
+								out1_tmp.team_gender = row10.team_gender;
+								out1_tmp.country_code = row10.country_code;
+								out1_tmp.country = row10.country;
+								out1_tmp.country_long = row10.country_long;
+								out1_tmp.discipline = row10.discipline;
+								out1_tmp.disciplines_code = row10.disciplines_code;
+								out1_tmp.events = row10.events;
+								out1_tmp.coaches = Var.coaches;
+								out1_tmp.athletes = Var.athletes;
+								out1_tmp.athletes_codes = Var.athletes_codes;
+								out1_tmp.num_athletes = Var.num_athletes;
+								out1_tmp.coaches_codes = Var.coaches_codes;
+								out1_tmp.num_coaches = Var.num_coaches;
+								out1 = out1_tmp;
+// ###############################
+
+							} // end of Var scope
+
+							rejectedInnerJoin_tMap_1 = false;
+
+							tos_count_tMap_1++;
+
+							/**
+							 * [tMap_1 main ] stop
+							 */
+
+							/**
+							 * [tMap_1 process_data_begin ] start
+							 */
+
+							currentComponent = "tMap_1";
+
+							/**
+							 * [tMap_1 process_data_begin ] stop
+							 */
+// Start of branch "out1"
+							if (out1 != null) {
+
+								/**
+								 * [tFileOutputDelimited_2 main ] start
+								 */
+
+								currentComponent = "tFileOutputDelimited_2";
+
+								if (execStat) {
+									runStat.updateStatOnConnection(iterateId, 1, 1
+
+											, "out1"
+
+									);
+								}
+
+								StringBuilder sb_tFileOutputDelimited_2 = new StringBuilder();
+								if (out1.code != null) {
+									sb_tFileOutputDelimited_2.append(out1.code);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.current != null) {
+									sb_tFileOutputDelimited_2.append(out1.current);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.team != null) {
+									sb_tFileOutputDelimited_2.append(out1.team);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.team_gender != null) {
+									sb_tFileOutputDelimited_2.append(out1.team_gender);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.country_code != null) {
+									sb_tFileOutputDelimited_2.append(out1.country_code);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.country != null) {
+									sb_tFileOutputDelimited_2.append(out1.country);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.country_long != null) {
+									sb_tFileOutputDelimited_2.append(out1.country_long);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.discipline != null) {
+									sb_tFileOutputDelimited_2.append(out1.discipline);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.disciplines_code != null) {
+									sb_tFileOutputDelimited_2.append(out1.disciplines_code);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.events != null) {
+									sb_tFileOutputDelimited_2.append(out1.events);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.coaches != null) {
+									sb_tFileOutputDelimited_2.append(out1.coaches);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.athletes != null) {
+									sb_tFileOutputDelimited_2.append(out1.athletes);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.athletes_codes != null) {
+									sb_tFileOutputDelimited_2.append(out1.athletes_codes);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.num_athletes != null) {
+									sb_tFileOutputDelimited_2.append(out1.num_athletes);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.coaches_codes != null) {
+									sb_tFileOutputDelimited_2.append(out1.coaches_codes);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_tFileOutputDelimited_2);
+								if (out1.num_coaches != null) {
+									sb_tFileOutputDelimited_2.append(out1.num_coaches);
+								}
+								sb_tFileOutputDelimited_2.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_2);
+
+								nb_line_tFileOutputDelimited_2++;
+								resourceMap.put("nb_line_tFileOutputDelimited_2", nb_line_tFileOutputDelimited_2);
+
+								outtFileOutputDelimited_2.write(sb_tFileOutputDelimited_2.toString());
+
+								tos_count_tFileOutputDelimited_2++;
+
+								/**
+								 * [tFileOutputDelimited_2 main ] stop
+								 */
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_begin ] start
+								 */
+
+								currentComponent = "tFileOutputDelimited_2";
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_begin ] stop
+								 */
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_end ] start
+								 */
+
+								currentComponent = "tFileOutputDelimited_2";
+
+								/**
+								 * [tFileOutputDelimited_2 process_data_end ] stop
+								 */
+
+							} // End of branch "out1"
+
+							/**
+							 * [tMap_1 process_data_end ] start
+							 */
+
+							currentComponent = "tMap_1";
+
+							/**
+							 * [tMap_1 process_data_end ] stop
+							 */
+
+						} // End of branch "row10"
+
+						/**
+						 * [tFileInputDelimited_4 process_data_end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_4";
+
+						/**
+						 * [tFileInputDelimited_4 process_data_end ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_4 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_4";
+
+						nb_line_tFileInputDelimited_4++;
+					}
+
+				} finally {
+					if (!(filename_tFileInputDelimited_4 instanceof java.io.InputStream)) {
+						if (csvReadertFileInputDelimited_4 != null) {
+							csvReadertFileInputDelimited_4.close();
+						}
+					}
+					if (csvReadertFileInputDelimited_4 != null) {
+						globalMap.put("tFileInputDelimited_4_NB_LINE", nb_line_tFileInputDelimited_4);
+					}
+
+				}
+
+				ok_Hash.put("tFileInputDelimited_4", true);
+				end_Hash.put("tFileInputDelimited_4", System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_4 end ] stop
+				 */
+
+				/**
+				 * [tMap_1 end ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row10");
+				}
+
+				ok_Hash.put("tMap_1", true);
+				end_Hash.put("tMap_1", System.currentTimeMillis());
+
+				/**
+				 * [tMap_1 end ] stop
+				 */
+
+				/**
+				 * [tFileOutputDelimited_2 end ] start
+				 */
+
+				currentComponent = "tFileOutputDelimited_2";
+
+				if (outtFileOutputDelimited_2 != null) {
+					outtFileOutputDelimited_2.flush();
+					outtFileOutputDelimited_2.close();
+				}
+
+				globalMap.put("tFileOutputDelimited_2_NB_LINE", nb_line_tFileOutputDelimited_2);
+				globalMap.put("tFileOutputDelimited_2_FILE_NAME", fileName_tFileOutputDelimited_2);
+
+				resourceMap.put("finish_tFileOutputDelimited_2", true);
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "out1");
+				}
+
+				ok_Hash.put("tFileOutputDelimited_2", true);
+				end_Hash.put("tFileOutputDelimited_2", System.currentTimeMillis());
+
+				/**
+				 * [tFileOutputDelimited_2 end ] stop
+				 */
+
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tFileInputDelimited_4 finally ] start
+				 */
+
+				currentComponent = "tFileInputDelimited_4";
+
+				/**
+				 * [tFileInputDelimited_4 finally ] stop
+				 */
+
+				/**
+				 * [tMap_1 finally ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+				/**
+				 * [tMap_1 finally ] stop
+				 */
+
+				/**
+				 * [tFileOutputDelimited_2 finally ] start
+				 */
+
+				currentComponent = "tFileOutputDelimited_2";
+
+				if (resourceMap.get("finish_tFileOutputDelimited_2") == null) {
+
+					java.io.Writer outtFileOutputDelimited_2 = (java.io.Writer) resourceMap
+							.get("out_tFileOutputDelimited_2");
+					if (outtFileOutputDelimited_2 != null) {
+						outtFileOutputDelimited_2.flush();
+						outtFileOutputDelimited_2.close();
+					}
+
+				}
+
+				/**
+				 * [tFileOutputDelimited_2 finally ] stop
+				 */
+
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tFileInputDelimited_4_SUBPROCESS_STATE", 1);
+	}
+
 	public String resuming_logs_dir_path = null;
 	public String resuming_checkpoint_path = null;
 	public String parent_part_launcher = null;
@@ -8928,6 +10955,18 @@ public class completude_teams implements TalendJob {
 			e_tFileInputDelimited_3.printStackTrace();
 
 		}
+		try {
+			errorCode = null;
+			tFileInputDelimited_4Process(globalMap);
+			if (!"failure".equals(status)) {
+				status = "end";
+			}
+		} catch (TalendException e_tFileInputDelimited_4) {
+			globalMap.put("tFileInputDelimited_4_SUBPROCESS_STATE", -1);
+
+			e_tFileInputDelimited_4.printStackTrace();
+
+		}
 
 		this.globalResumeTicket = true;// to run tPostJob
 
@@ -9081,6 +11120,6 @@ public class completude_teams implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 263344 characters generated by Talend Open Studio for Data Integration on the
- * 3 janvier 2025 à 10:23:15 CET
+ * 327332 characters generated by Talend Open Studio for Data Integration on the
+ * 8 janvier 2025 à 14:42:04 CET
  ************************************************************************************************/

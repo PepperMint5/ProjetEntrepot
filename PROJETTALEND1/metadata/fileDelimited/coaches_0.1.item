@@ -14,7 +14,7 @@
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_F3CSDMj5Ee-KjJ4otWKetA" label="country_long" length="50" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_F3CSDcj5Ee-KjJ4otWKetA" label="disciplines" length="30" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_F3CSDsj5Ee-KjJ4otWKetA" label="events" length="5" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
-      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_F3CSD8j5Ee-KjJ4otWKetA" label="birth_date" length="-1" talendType="id_Date" pattern="&quot;yyyy-mm-dd&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_F3CSD8j5Ee-KjJ4otWKetA" label="birth_date" length="-1" talendType="id_Date" pattern="&quot;yyyy-MM-dd&quot;"/>
     </ownedElement>
   </orgomg.cwm.resource.record:RecordFile>
 </xmi:XMI>

@@ -1,0 +1,15 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<expression:EMFExpression xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:expression="http:///expression.ecore" id="tMap_1=>" expression="row7.events == &quot;&quot; ? &quot;UNKNOWN&quot; : row7.events">
+  <variables name="row7.code" value="null" talendType="id_Integer" nullable="true"/>
+  <variables name="row7.current" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.name" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.gender" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.function" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.category" value="null" talendType="id_Character" nullable="true"/>
+  <variables name="row7.country_code" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.country_long" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.disciplines" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.events" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row7.birth_date" value="null" talendType="id_Date" nullable="true"/>
+</expression:EMFExpression>
