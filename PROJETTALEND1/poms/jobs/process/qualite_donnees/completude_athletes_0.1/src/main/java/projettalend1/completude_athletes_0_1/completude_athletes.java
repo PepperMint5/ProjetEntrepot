@@ -12144,7 +12144,7 @@ public class completude_athletes implements TalendJob {
 
 				String fileName_tFileOutputDelimited_3 = "";
 				fileName_tFileOutputDelimited_3 = (new java.io.File(
-						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/ProjetEntrepot/athletes_clean.csv"))
+						"C:/Users/Alix Lemoine/Documents/M2/S1/Entrepôt de Données/Projet/ProjetEntrepot/output/cleanProcess/athletes_cleaned.csv"))
 								.getAbsolutePath().replace("\\", "/");
 				String fullName_tFileOutputDelimited_3 = null;
 				String extension_tFileOutputDelimited_3 = null;
@@ -12182,21 +12182,108 @@ public class completude_athletes implements TalendJob {
 							+ "\" already exist. If you want to overwrite the file, please uncheck the"
 							+ " \"Throw an error if the file already exist\" option in Advanced settings.");
 				}
+				String[] headColutFileOutputDelimited_3 = new String[36];
+				class CSVBasicSet_tFileOutputDelimited_3 {
+					private char field_Delim;
+					private char row_Delim;
+					private char escape;
+					private char textEnclosure;
+					private boolean useCRLFRecordDelimiter;
+
+					public boolean isUseCRLFRecordDelimiter() {
+						return useCRLFRecordDelimiter;
+					}
+
+					public void setFieldSeparator(String fieldSep) throws IllegalArgumentException {
+						char field_Delim_tFileOutputDelimited_3[] = null;
+
+						// support passing value (property: Field Separator) by 'context.fs' or
+						// 'globalMap.get("fs")'.
+						if (fieldSep.length() > 0) {
+							field_Delim_tFileOutputDelimited_3 = fieldSep.toCharArray();
+						} else {
+							throw new IllegalArgumentException("Field Separator must be assigned a char.");
+						}
+						this.field_Delim = field_Delim_tFileOutputDelimited_3[0];
+					}
+
+					public char getFieldDelim() {
+						if (this.field_Delim == 0) {
+							setFieldSeparator(";");
+						}
+						return this.field_Delim;
+					}
+
+					public void setRowSeparator(String rowSep) {
+						if ("\r\n".equals(rowSep)) {
+							useCRLFRecordDelimiter = true;
+							return;
+						}
+						char row_DelimtFileOutputDelimited_3[] = null;
+
+						// support passing value (property: Row Separator) by 'context.rs' or
+						// 'globalMap.get("rs")'.
+						if (rowSep.length() > 0) {
+							row_DelimtFileOutputDelimited_3 = rowSep.toCharArray();
+						} else {
+							throw new IllegalArgumentException("Row Separator must be assigned a char.");
+						}
+						this.row_Delim = row_DelimtFileOutputDelimited_3[0];
+					}
+
+					public char getRowDelim() {
+						if (this.row_Delim == 0) {
+							setRowSeparator("\n");
+						}
+						return this.row_Delim;
+					}
+
+					public void setEscapeAndTextEnclosure(String strEscape, String strTextEnclosure)
+							throws IllegalArgumentException {
+						if (strEscape.length() <= 0) {
+							throw new IllegalArgumentException("Escape Char must be assigned a char.");
+						}
+
+						if ("".equals(strTextEnclosure))
+							strTextEnclosure = "\0";
+						char textEnclosure_tFileOutputDelimited_3[] = null;
+
+						if (strTextEnclosure.length() > 0) {
+							textEnclosure_tFileOutputDelimited_3 = strTextEnclosure.toCharArray();
+						} else {
+							throw new IllegalArgumentException("Text Enclosure must be assigned a char.");
+						}
+
+						this.textEnclosure = textEnclosure_tFileOutputDelimited_3[0];
+
+						if (("\\").equals(strEscape)) {
+							this.escape = '\\';
+						} else if (strEscape.equals(strTextEnclosure)) {
+							this.escape = this.textEnclosure;
+						} else {
+							// the default escape mode is double escape
+							this.escape = this.textEnclosure;
+						}
+
+					}
+
+					public char getEscapeChar() {
+						return (char) this.escape;
+					}
+
+					public char getTextEnclosure() {
+						return this.textEnclosure;
+					}
+				}
+
 				int nb_line_tFileOutputDelimited_3 = 0;
 				int splitedFileNo_tFileOutputDelimited_3 = 0;
 				int currentRow_tFileOutputDelimited_3 = 0;
 
-				final String OUT_DELIM_tFileOutputDelimited_3 = /** Start field tFileOutputDelimited_3:FIELDSEPARATOR */
-						";"/** End field tFileOutputDelimited_3:FIELDSEPARATOR */
-				;
-
-				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_3 = /**
-																		 * Start field
-																		 * tFileOutputDelimited_3:ROWSEPARATOR
-																		 */
-						"\n"/** End field tFileOutputDelimited_3:ROWSEPARATOR */
-				;
-
+				CSVBasicSet_tFileOutputDelimited_3 csvSettings_tFileOutputDelimited_3 = new CSVBasicSet_tFileOutputDelimited_3();
+				csvSettings_tFileOutputDelimited_3.setFieldSeparator(";");
+				csvSettings_tFileOutputDelimited_3.setRowSeparator("\n");
+				csvSettings_tFileOutputDelimited_3.setEscapeAndTextEnclosure("\"", "\"");
 				// create directory only if not exists
 				if (directory_tFileOutputDelimited_3 != null && directory_tFileOutputDelimited_3.trim().length() != 0) {
 					java.io.File dir_tFileOutputDelimited_3 = new java.io.File(directory_tFileOutputDelimited_3);
@@ -12204,93 +12291,66 @@ public class completude_athletes implements TalendJob {
 						dir_tFileOutputDelimited_3.mkdirs();
 					}
 				}
-
-				// routines.system.Row
-				java.io.Writer outtFileOutputDelimited_3 = null;
+				com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_3 = null;
 
 				java.io.File fileToDelete_tFileOutputDelimited_3 = new java.io.File(fileName_tFileOutputDelimited_3);
 				if (fileToDelete_tFileOutputDelimited_3.exists()) {
 					fileToDelete_tFileOutputDelimited_3.delete();
 				}
-				outtFileOutputDelimited_3 = new java.io.BufferedWriter(new java.io.OutputStreamWriter(
-						new java.io.FileOutputStream(fileName_tFileOutputDelimited_3, false), "ISO-8859-15"));
-				if (filetFileOutputDelimited_3.length() == 0) {
-					outtFileOutputDelimited_3.write("code");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("current");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("name");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("name_short");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("name_tv");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("gender");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("function");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("country_code");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("country");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("country_long");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("nationality");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("nationality_long");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("nationality_code");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("height");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("weight");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("disciplines");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("events");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("birth_date");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("birth_place");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("birth_country");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("residence_place");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("residence_country");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("nickname");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("hobbies");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("occupation");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("education");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("family");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("lang");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("coach");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("reason");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("hero");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("influence");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("philosophy");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("sporting_relatives");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("ritual");
-					outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.write("other_sports");
-					outtFileOutputDelimited_3.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_3);
-					outtFileOutputDelimited_3.flush();
+				CsvWritertFileOutputDelimited_3 = new com.talend.csv.CSVWriter(
+						new java.io.BufferedWriter(new java.io.OutputStreamWriter(
+								new java.io.FileOutputStream(fileName_tFileOutputDelimited_3, false), "ISO-8859-15")));
+				CsvWritertFileOutputDelimited_3.setSeparator(csvSettings_tFileOutputDelimited_3.getFieldDelim());
+				if (!csvSettings_tFileOutputDelimited_3.isUseCRLFRecordDelimiter()
+						&& csvSettings_tFileOutputDelimited_3.getRowDelim() != '\r'
+						&& csvSettings_tFileOutputDelimited_3.getRowDelim() != '\n') {
+					CsvWritertFileOutputDelimited_3.setLineEnd("" + csvSettings_tFileOutputDelimited_3.getRowDelim());
 				}
+				if (filetFileOutputDelimited_3.length() == 0) {
+					headColutFileOutputDelimited_3[0] = "code";
+					headColutFileOutputDelimited_3[1] = "current";
+					headColutFileOutputDelimited_3[2] = "name";
+					headColutFileOutputDelimited_3[3] = "name_short";
+					headColutFileOutputDelimited_3[4] = "name_tv";
+					headColutFileOutputDelimited_3[5] = "gender";
+					headColutFileOutputDelimited_3[6] = "function";
+					headColutFileOutputDelimited_3[7] = "country_code";
+					headColutFileOutputDelimited_3[8] = "country";
+					headColutFileOutputDelimited_3[9] = "country_long";
+					headColutFileOutputDelimited_3[10] = "nationality";
+					headColutFileOutputDelimited_3[11] = "nationality_long";
+					headColutFileOutputDelimited_3[12] = "nationality_code";
+					headColutFileOutputDelimited_3[13] = "height";
+					headColutFileOutputDelimited_3[14] = "weight";
+					headColutFileOutputDelimited_3[15] = "disciplines";
+					headColutFileOutputDelimited_3[16] = "events";
+					headColutFileOutputDelimited_3[17] = "birth_date";
+					headColutFileOutputDelimited_3[18] = "birth_place";
+					headColutFileOutputDelimited_3[19] = "birth_country";
+					headColutFileOutputDelimited_3[20] = "residence_place";
+					headColutFileOutputDelimited_3[21] = "residence_country";
+					headColutFileOutputDelimited_3[22] = "nickname";
+					headColutFileOutputDelimited_3[23] = "hobbies";
+					headColutFileOutputDelimited_3[24] = "occupation";
+					headColutFileOutputDelimited_3[25] = "education";
+					headColutFileOutputDelimited_3[26] = "family";
+					headColutFileOutputDelimited_3[27] = "lang";
+					headColutFileOutputDelimited_3[28] = "coach";
+					headColutFileOutputDelimited_3[29] = "reason";
+					headColutFileOutputDelimited_3[30] = "hero";
+					headColutFileOutputDelimited_3[31] = "influence";
+					headColutFileOutputDelimited_3[32] = "philosophy";
+					headColutFileOutputDelimited_3[33] = "sporting_relatives";
+					headColutFileOutputDelimited_3[34] = "ritual";
+					headColutFileOutputDelimited_3[35] = "other_sports";
+					CsvWritertFileOutputDelimited_3.writeNext(headColutFileOutputDelimited_3);
+					CsvWritertFileOutputDelimited_3.flush();
+				}
+				CsvWritertFileOutputDelimited_3.setEscapeChar(csvSettings_tFileOutputDelimited_3.getEscapeChar());
+				CsvWritertFileOutputDelimited_3.setQuoteChar(csvSettings_tFileOutputDelimited_3.getTextEnclosure());
+				CsvWritertFileOutputDelimited_3.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
-				resourceMap.put("out_tFileOutputDelimited_3", outtFileOutputDelimited_3);
+				resourceMap.put("CsvWriter_tFileOutputDelimited_3", CsvWritertFileOutputDelimited_3);
 				resourceMap.put("nb_line_tFileOutputDelimited_3", nb_line_tFileOutputDelimited_3);
 
 				/**
@@ -13301,157 +13361,52 @@ public class completude_athletes implements TalendJob {
 									);
 								}
 
-								StringBuilder sb_tFileOutputDelimited_3 = new StringBuilder();
-								if (out1.code != null) {
-									sb_tFileOutputDelimited_3.append(out1.code);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.current != null) {
-									sb_tFileOutputDelimited_3.append(out1.current);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.name != null) {
-									sb_tFileOutputDelimited_3.append(out1.name);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.name_short != null) {
-									sb_tFileOutputDelimited_3.append(out1.name_short);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.name_tv != null) {
-									sb_tFileOutputDelimited_3.append(out1.name_tv);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.gender != null) {
-									sb_tFileOutputDelimited_3.append(out1.gender);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.function != null) {
-									sb_tFileOutputDelimited_3.append(out1.function);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.country_code != null) {
-									sb_tFileOutputDelimited_3.append(out1.country_code);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.country != null) {
-									sb_tFileOutputDelimited_3.append(out1.country);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.country_long != null) {
-									sb_tFileOutputDelimited_3.append(out1.country_long);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.nationality != null) {
-									sb_tFileOutputDelimited_3.append(out1.nationality);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.nationality_long != null) {
-									sb_tFileOutputDelimited_3.append(out1.nationality_long);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.nationality_code != null) {
-									sb_tFileOutputDelimited_3.append(out1.nationality_code);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.height != null) {
-									sb_tFileOutputDelimited_3.append(out1.height);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.weight != null) {
-									sb_tFileOutputDelimited_3.append(out1.weight);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.disciplines != null) {
-									sb_tFileOutputDelimited_3.append(out1.disciplines);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.events != null) {
-									sb_tFileOutputDelimited_3.append(out1.events);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.birth_date != null) {
-									sb_tFileOutputDelimited_3
-											.append(FormatterUtils.format_Date(out1.birth_date, "yyyy-mm-dd"));
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.birth_place != null) {
-									sb_tFileOutputDelimited_3.append(out1.birth_place);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.birth_country != null) {
-									sb_tFileOutputDelimited_3.append(out1.birth_country);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.residence_place != null) {
-									sb_tFileOutputDelimited_3.append(out1.residence_place);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.residence_country != null) {
-									sb_tFileOutputDelimited_3.append(out1.residence_country);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.nickname != null) {
-									sb_tFileOutputDelimited_3.append(out1.nickname);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.hobbies != null) {
-									sb_tFileOutputDelimited_3.append(out1.hobbies);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.occupation != null) {
-									sb_tFileOutputDelimited_3.append(out1.occupation);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.education != null) {
-									sb_tFileOutputDelimited_3.append(out1.education);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.family != null) {
-									sb_tFileOutputDelimited_3.append(out1.family);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.lang != null) {
-									sb_tFileOutputDelimited_3.append(out1.lang);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.coach != null) {
-									sb_tFileOutputDelimited_3.append(out1.coach);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.reason != null) {
-									sb_tFileOutputDelimited_3.append(out1.reason);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.hero != null) {
-									sb_tFileOutputDelimited_3.append(out1.hero);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.influence != null) {
-									sb_tFileOutputDelimited_3.append(out1.influence);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.philosophy != null) {
-									sb_tFileOutputDelimited_3.append(out1.philosophy);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.sporting_relatives != null) {
-									sb_tFileOutputDelimited_3.append(out1.sporting_relatives);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.ritual != null) {
-									sb_tFileOutputDelimited_3.append(out1.ritual);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
-								if (out1.other_sports != null) {
-									sb_tFileOutputDelimited_3.append(out1.other_sports);
-								}
-								sb_tFileOutputDelimited_3.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_3);
-
+								String[] rowtFileOutputDelimited_3 = new String[36];
+								rowtFileOutputDelimited_3[0] = out1.code == null ? null : String.valueOf(out1.code);
+								rowtFileOutputDelimited_3[1] = out1.current == null ? null : out1.current;
+								rowtFileOutputDelimited_3[2] = out1.name == null ? null : out1.name;
+								rowtFileOutputDelimited_3[3] = out1.name_short == null ? null : out1.name_short;
+								rowtFileOutputDelimited_3[4] = out1.name_tv == null ? null : out1.name_tv;
+								rowtFileOutputDelimited_3[5] = out1.gender == null ? null : out1.gender;
+								rowtFileOutputDelimited_3[6] = out1.function == null ? null : out1.function;
+								rowtFileOutputDelimited_3[7] = out1.country_code == null ? null : out1.country_code;
+								rowtFileOutputDelimited_3[8] = out1.country == null ? null : out1.country;
+								rowtFileOutputDelimited_3[9] = out1.country_long == null ? null : out1.country_long;
+								rowtFileOutputDelimited_3[10] = out1.nationality == null ? null : out1.nationality;
+								rowtFileOutputDelimited_3[11] = out1.nationality_long == null ? null
+										: out1.nationality_long;
+								rowtFileOutputDelimited_3[12] = out1.nationality_code == null ? null
+										: out1.nationality_code;
+								rowtFileOutputDelimited_3[13] = out1.height == null ? null : out1.height;
+								rowtFileOutputDelimited_3[14] = out1.weight == null ? null : out1.weight;
+								rowtFileOutputDelimited_3[15] = out1.disciplines == null ? null : out1.disciplines;
+								rowtFileOutputDelimited_3[16] = out1.events == null ? null : out1.events;
+								rowtFileOutputDelimited_3[17] = out1.birth_date == null ? null
+										: FormatterUtils.format_Date(out1.birth_date, "yyyy-mm-dd");
+								rowtFileOutputDelimited_3[18] = out1.birth_place == null ? null : out1.birth_place;
+								rowtFileOutputDelimited_3[19] = out1.birth_country == null ? null : out1.birth_country;
+								rowtFileOutputDelimited_3[20] = out1.residence_place == null ? null
+										: out1.residence_place;
+								rowtFileOutputDelimited_3[21] = out1.residence_country == null ? null
+										: out1.residence_country;
+								rowtFileOutputDelimited_3[22] = out1.nickname == null ? null : out1.nickname;
+								rowtFileOutputDelimited_3[23] = out1.hobbies == null ? null : out1.hobbies;
+								rowtFileOutputDelimited_3[24] = out1.occupation == null ? null : out1.occupation;
+								rowtFileOutputDelimited_3[25] = out1.education == null ? null : out1.education;
+								rowtFileOutputDelimited_3[26] = out1.family == null ? null : out1.family;
+								rowtFileOutputDelimited_3[27] = out1.lang == null ? null : out1.lang;
+								rowtFileOutputDelimited_3[28] = out1.coach == null ? null : out1.coach;
+								rowtFileOutputDelimited_3[29] = out1.reason == null ? null : out1.reason;
+								rowtFileOutputDelimited_3[30] = out1.hero == null ? null : out1.hero;
+								rowtFileOutputDelimited_3[31] = out1.influence == null ? null : out1.influence;
+								rowtFileOutputDelimited_3[32] = out1.philosophy == null ? null : out1.philosophy;
+								rowtFileOutputDelimited_3[33] = out1.sporting_relatives == null ? null
+										: out1.sporting_relatives;
+								rowtFileOutputDelimited_3[34] = out1.ritual == null ? null : out1.ritual;
+								rowtFileOutputDelimited_3[35] = out1.other_sports == null ? null : out1.other_sports;
 								nb_line_tFileOutputDelimited_3++;
 								resourceMap.put("nb_line_tFileOutputDelimited_3", nb_line_tFileOutputDelimited_3);
-
-								outtFileOutputDelimited_3.write(sb_tFileOutputDelimited_3.toString());
+								CsvWritertFileOutputDelimited_3.writeNext(rowtFileOutputDelimited_3);
 
 								tos_count_tFileOutputDelimited_3++;
 
@@ -13558,13 +13513,11 @@ public class completude_athletes implements TalendJob {
 
 				currentComponent = "tFileOutputDelimited_3";
 
-				if (outtFileOutputDelimited_3 != null) {
-					outtFileOutputDelimited_3.flush();
-					outtFileOutputDelimited_3.close();
+				if (CsvWritertFileOutputDelimited_3 != null) {
+					CsvWritertFileOutputDelimited_3.close();
 				}
 
 				globalMap.put("tFileOutputDelimited_3_NB_LINE", nb_line_tFileOutputDelimited_3);
-				globalMap.put("tFileOutputDelimited_3_FILE_NAME", fileName_tFileOutputDelimited_3);
 
 				resourceMap.put("finish_tFileOutputDelimited_3", true);
 
@@ -13623,11 +13576,11 @@ public class completude_athletes implements TalendJob {
 
 				if (resourceMap.get("finish_tFileOutputDelimited_3") == null) {
 
-					java.io.Writer outtFileOutputDelimited_3 = (java.io.Writer) resourceMap
-							.get("out_tFileOutputDelimited_3");
-					if (outtFileOutputDelimited_3 != null) {
-						outtFileOutputDelimited_3.flush();
-						outtFileOutputDelimited_3.close();
+					com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_3 = (com.talend.csv.CSVWriter) resourceMap
+							.get("CsvWriter_tFileOutputDelimited_3");
+
+					if (CsvWritertFileOutputDelimited_3 != null) {
+						CsvWritertFileOutputDelimited_3.close();
 					}
 
 				}
@@ -14039,6 +13992,6 @@ public class completude_athletes implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 398981 characters generated by Talend Open Studio for Data Integration on the
- * 8 janvier 2025 à 13:22:41 CET
+ * 392111 characters generated by Talend Open Studio for Data Integration on the
+ * 9 janvier 2025 à 11:26:31 CET
  ************************************************************************************************/
